@@ -9,7 +9,12 @@ public class MaxiPagoExample {
 
 	Report report = new Report();
 			
-	RapiResponse response = report.CheckRequestStatus("merchantId", "merchantKey", "requestToken");			
+	RapiResponse response = report.CheckRequestStatus(
+		"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+		"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+		"requestToken" // REQUIRED - Request token created by maxiPago! //
+	);
+
 	if (response.getHeader().getErrorCode() == "0") {
                 // Success
 	}

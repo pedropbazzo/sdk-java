@@ -7,16 +7,21 @@ public class MaxiPagoExample {
 
                try {
 
-	Report report = new Report();
+				Report report = new Report();
+						
+				RapiResponse response = report.GetTransactionDetailReport(
+					"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+					"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+					"pageToken", // REQUIRED - Token of the page replied by maxiPago! //
+					"pageNumber" // REQUIRED - PAge number you want to view //
+				);
 			
-	RapiResponse response = report.GetTransactionDetailReport("merchantId", "merchantKey", "pageToken", "pageNumber");
-			
-	if (response.getHeader().getErrorCode() == "0") {
-    	// Success
-	}
-	else { 
-        // Fail
-    }
+				if (response.getHeader().getErrorCode() == "0") {
+			    	// Success
+				}
+				else { 
+			        // Fail
+			    }
 
               }
               catch (Exception e) {

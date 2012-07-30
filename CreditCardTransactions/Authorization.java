@@ -10,7 +10,35 @@ public class MaxiPagoExample {
             Transaction transaction = new Transaction();
             transaction.setEnvironment("TEST");
 	
-            ResponseBase response = transaction.Auth("merchantId", "merchantKey", "referenceNum", "chargeTotal", "creditCardNumber", "expMonth", "expYear", "cvvInd", "cvvNumber", "processorId", "numberOfInstallments", "chargeInterest", "ipAddress", "customerToken", "onFileEndDate", "onFilePermission", "onFileComment", "onFileMaxChargeAmount", "billingName", "billingAddress", "billingAddress2", "billingCity", "billingState", "billingPostalCode", "billingCountry", "billingPhone", "billingEmail");
+            ResponseBase response = transaction.Auth(
+				"merchantId",
+				"merchantKey",
+				"referenceNum",
+				"chargeTotal",
+				"creditCardNumber",
+				"expMonth",
+				"expYear",
+				"cvvInd",
+				"cvvNumber",
+				"processorId",
+				"numberOfInstallments",
+				"chargeInterest",
+				"ipAddress",
+				"customerToken",
+				"onFileEndDate",
+				"onFilePermission",
+				"onFileComment",
+				"onFileMaxChargeAmount",
+				"billingName",
+				"billingAddress",
+				"billingAddress2",
+				"billingCity",
+				"billingState",
+				"billingPostalCode",
+				"billingCountry",
+				"billingPhone",
+				"billingEmail"
+			);
             
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;
