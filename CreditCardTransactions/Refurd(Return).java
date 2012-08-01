@@ -10,7 +10,13 @@ public class MaxiPagoExample {
             Transaction transaction = new Transaction();
             transaction.setEnvironment("TEST");
 
-            ResponseBase response = transaction.Return("merchantId", "merchantKey", "orderID", "referenceNum", "chargeTotal");
+            ResponseBase response = transaction.Return(
+                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+                "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+				"orderID", // REQUIRED - Order ID replied by maxiPago! after authorization //
+                "referenceNum", // REQUIRED - Merchant internal order number //
+                "chargeTotal" // REQUIRED - Transaction amount in US format //
+			);
             
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;

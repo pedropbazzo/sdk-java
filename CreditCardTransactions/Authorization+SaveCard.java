@@ -11,7 +11,7 @@ public class MaxiPagoExample {
             transaction.setEnvironment("TEST");
 	
             ResponseBase response = transaction.Auth(
-	             "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
                 "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
                 "referenceNum", // REQUIRED - Merchant internal order number //
                 "chargeTotal", // REQUIRED - Transaction amount in US format //
@@ -37,7 +37,8 @@ public class MaxiPagoExample {
                 "billingPostalCode", // Optional - Customer zip code //
                 "billingCountry", // Optional - Customer country per ISO 3166-2 //
                 "billingPhone", // Optional - Customer phone number //
-                "billingEmail" // Optional - Customer email address //
+                "billingEmail", // Optional - Customer email address //
+				"currencyCode" // Optional - Currency code. Valid only for ChasePaymentech. Please see full documentation for more info //
             );
 
             if(response.IsTransactionResponse()) {
