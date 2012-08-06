@@ -9,18 +9,18 @@ public class MaxiPagoExample {
         try {
             Transaction transaction = new Transaction();
             transaction.setEnvironment("TEST");
-
-            ResponseBase response = transaction.Auth(
-                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-                "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-                "referenceNum", // REQUIRED - Merchant internal order number //
-                "chargeTotal", // REQUIRED - Transaction amount in US format //
-                "processorId", // REQUIRED - Use '1' for testing. Contact our team for production values //
+	
+            ResponseBase response = transaction.Sale(
+				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+				"referenceNum", // REQUIRED - Merchant internal order number //
+				"chargeTotal", // REQUIRED - Transaction amount in US format //
+				"processorId", // REQUIRED - Use '1' for testing. Contact our team for production values //
 				"token", // REQUIRED - Credit card token assigned by maxiPago! //
 				"customerId", // REQUIRED - Customer ID created by maxiPago! //
-                "numberOfInstallment", // Optional - Number of installments for credit card purchases ("parcelas") //
-                "chargeInterest", // Optional - Charge interest lfag (Y/N) for installment purchase ("com" e "sem" juros) //
-                "ipAddress", // Optional //
+				"numberOfInstallment", // Optional - Number of installments for credit card purchases ("parcelas") //
+				"chargeInterest", // Optional - Charge interest lfag (Y/N) for installment purchase ("com" e "sem" juros) //
+				"ipAddress", // Optional //
 				"customerIdExt", // Optional, Merchant internal customer number //
 				"billingName", // RECOMMENDED - Customer name //
 				"billingAddress", // Optional - Customer address //
@@ -41,16 +41,16 @@ public class MaxiPagoExample {
 				"shippingPhone", // Optional - Shipping phone number //
 				"shippingEmail", // Optional - Shipping email address //
 				"currencyCode" // Optional - Currency code. Valid only for ChasePaymentech. Please see full documentation for more info //
-			);	       
-            
+			);
+
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;
                 
-                if(result.getResponseCode() == "0") {
-                    //  APPROVED
+                if(result.getResponseCode().equals("0")) {
+                    // Success
                 }
                 else {
-                    //  DECLINED
+                    // Decline
                 }
             }
             else if(response.IsErrorResponse()) {

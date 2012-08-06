@@ -24,7 +24,7 @@ public class MaxiPagoExample {
 		"endRecordNumber" // Optional - null by default //
 	);
 
-	if (response.getHeader().getErrorCode() == "0") {
+	if (response.getHeader().getErrorCode().equals("0")) {
 
                 if (response.getResult().getRequestToken() == null) {
                     //  Success

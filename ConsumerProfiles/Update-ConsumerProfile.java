@@ -27,7 +27,7 @@ public class MaxiPagoExample {
 	                "sex" // Optional - Customer gender (M/F) //
 	            );
 
-                 if(response.getErrorCode() == "0") {
+                 if(response.getErrorCode().equals("0")) {
 					// Success
                   }
                   else {

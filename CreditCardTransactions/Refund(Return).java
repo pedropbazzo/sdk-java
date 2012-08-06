@@ -11,17 +11,17 @@ public class MaxiPagoExample {
             transaction.setEnvironment("TEST");
 
             ResponseBase response = transaction.Return(
-                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-                "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
 				"orderID", // REQUIRED - Order ID replied by maxiPago! after authorization //
-                "referenceNum", // REQUIRED - Merchant internal order number //
-                "chargeTotal" // REQUIRED - Transaction amount in US format //
+				"referenceNum", // REQUIRED - Merchant internal order number //
+				"chargeTotal" // REQUIRED - Transaction amount in US format //
 			);
             
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;
                 
-                if(result.getResponseCode() == "0") {
+                if(result.getResponseCode().equals("0")) {
                     //  APPROVED.
                 }
                 else {

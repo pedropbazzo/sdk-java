@@ -27,7 +27,7 @@ public class MaxiPagoExample {
 	                "billingEmail" // REQUIRED - Customer email address //
 	            );
 
-                 if(response.getErrorCode() == "0") {
+                 if(response.getErrorCode().equals("0")) {
 					//  Success
 					//  Credit card token in response.getResult().getToken()
                   }

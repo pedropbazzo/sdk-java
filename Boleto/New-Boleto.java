@@ -34,7 +34,7 @@ public class MaxiPagoExample {
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;
                 
-                if(result.getResponseCode() == "0") {
+                if(result.getResponseCode().equals("0")) {
                     // Success
                 }
                 else {

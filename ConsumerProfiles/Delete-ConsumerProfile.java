@@ -15,7 +15,7 @@ public class MaxiPagoExample {
 	                "customerId" // REQUIRED - Customer ID create by maxiPago! after the "add-customer" command //
 	            );
 
-                 if(response.getErrorCode() == "0") {
+                 if(response.getErrorCode().equals("0")) {
 					// Success
                   }
                   else {

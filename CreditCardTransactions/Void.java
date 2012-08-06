@@ -10,8 +10,8 @@ public class MaxiPagoExample {
             transaction.setEnvironment("TEST");
 
             ResponseBase  response = transaction.Void(
-                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-                "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
+				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
 				"transactionID", // REQUIRED - Transaction ID created by maxiPago! //
 				"ipAddress" // Optional //
 			);
@@ -19,7 +19,7 @@ public class MaxiPagoExample {
             if(response.IsTransactionResponse()) {
                 TransactionResponse result = (TransactionResponse)response;
                 
-                if(result.getResponseCode() == "0") {
+                if(result.getResponseCode().equals("0")) {
                     // APPROVED
                 }
                 else {

@@ -16,7 +16,7 @@ public class MaxiPagoExample {
 	                "token" // REQUIRED - Credit card token create by maxiPago! //
 				);
 
-                 if(response.getErrorCode() == "0") {
+                 if(response.getErrorCode().equals("0")) {
 					// Success
                   }
                   else {

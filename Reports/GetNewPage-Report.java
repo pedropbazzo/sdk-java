@@ -16,7 +16,7 @@ public class MaxiPagoExample {
 					"pageNumber" // REQUIRED - PAge number you want to view //
 				);
 			
-				if (response.getHeader().getErrorCode() == "0") {
+				if (response.getHeader().getErrorCode().equals("0")) {
 			    	// Success
 				}
 				else { 

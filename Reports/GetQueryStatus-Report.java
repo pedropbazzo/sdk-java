@@ -15,7 +15,7 @@ public class MaxiPagoExample {
 		"requestToken" // REQUIRED - Request token created by maxiPago! //
 	);
 
-	if (response.getHeader().getErrorCode() == "0") {
+	if (response.getHeader().getErrorCode().equals("0")) {
                 // Success
 	}
 	else { 
