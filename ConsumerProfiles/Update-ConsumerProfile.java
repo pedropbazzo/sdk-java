@@ -7,7 +7,8 @@ public class MaxiPagoExample {
 
           try {
 
-                 Api api = new Api();
+						Api api = new Api();
+						api.setEnvironment("TEST");
 			
                  ApiResponse response = api.UpdateConsumer(
 	            	"merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //

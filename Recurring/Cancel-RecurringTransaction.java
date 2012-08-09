@@ -5,7 +5,9 @@ public class MaxiPagoExample {
 	public static void main(String[] args) {
 
 		try {
-			Api api = new Api();
+
+						Api api = new Api();
+						api.setEnvironment("TEST");
 
 			ApiResponse apiResponse = api.CancelRecurring(
 				"merchantId", // Merchant ID assigned by maxiPago! //
