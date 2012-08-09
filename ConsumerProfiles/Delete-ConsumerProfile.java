@@ -3,28 +3,26 @@ import maxiPago.Gateway.Api;
 
 public class MaxiPagoExample {
 
-    public static void main(String[] args) {
+	public static void main(String[] args) {
 
-          try {
+		try {
 
-						Api api = new Api();
-						api.setEnvironment("TEST");
-			
-                 ApiResponse response = api.DeleteConsumer(
-	                "merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //
-	                "merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-	                "customerId" // REQUIRED - Customer ID create by maxiPago! after the "add-customer" command //
-	            );
+			Api api = new Api();
+			api.setEnvironment("TEST");
 
-                 if(response.getErrorCode().equals("0")) {
-					// Success
-                  }
-                  else {
-					// Fail
-                  }
+			ApiResponse response = api.DeleteConsumer(
+				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //
+				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
+				"customerId" // REQUIRED - Customer ID create by maxiPago! after the "add-customer" command //
+			);
 
-            } catch (Exception e) {
-e.printStackTrace();
-                }
-         }
+			if(response.getErrorCode().equals("0")) {
+				// Success
+			}
+			else {
+				// Fail
+			}
+		}
+		catch (Exception e) { e.printStackTrace(); }
+	}
 }
