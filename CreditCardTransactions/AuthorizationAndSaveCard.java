@@ -22,7 +22,7 @@ public class MaxiPagoExample {
 				"cvvNumber", // RECOMMENDED - Credit card verification number //
 				"processorId", // REQUIRED - Use '1' for testing. Contact our team for production values //
 				"numberOfInstallment", // Optional - Number of installments for credit card purchases ("parcelas") //
-				"chargeInterest", // Optional - Charge interest lfag (Y/N) for installment purchase ("com" e "sem" juros) //
+				"chargeInterest", // Optional - Charge interest flag (Y/N) for installment purchase ("com" e "sem" juros) //
 				"ipAddress", // Optional //
 				"customerToken", // REQUIRED - Customer ID replied by maxiPago! after creating a customer profile //
 				"onFileEndDate", // Optional - Date the credit card token will no longer be available for use //
