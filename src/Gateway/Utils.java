@@ -24,17 +24,23 @@ import maxiPago.DataContract.Transactional.TransactionResponse;
 
 class Utils {
 	
-	/*
-	 * Sends the request
+	/**
+	 * Faz o envio do request
+	 * Send the request
+	 * @param request
+	 * @param environment
+	 * @return
+	 * @throws Exception
 	 */
-    public ResponseBase SendRequest(Object request, String environment) throws Exception {
+    ResponseBase SendRequest(Object request, String environment) throws Exception {
 
 		if(request == null)
 			throw new Exception("The Request can not be null or empty");
 		
 		String xml = ToXml(request);
 		
-		// Gets environment URL
+		//Pega a URL de acordo com o que foi passado.
+		//take the url according by past
 		String url = GetUrl(request, environment);
 			
 		String responseContent = Post(xml, url);
@@ -42,7 +48,14 @@ class Utils {
 		return ParseResponse(responseContent);
 	}
     
-
+    /**
+     * Efetua o POST dos dados
+     * Make the POST of data
+     * @param xml
+     * @param url
+     * @return
+     * @throws IOException
+     */
     private String Post(String xml, String url) throws IOException {
     	
     	boolean bHTTPS = false;
@@ -116,18 +129,22 @@ class Utils {
     	
     }
     
-    
+   /**
+    * Efetua o parse dos dados para String
+    * Make the parse of data to String
+    * @param request
+    * @return
+    */
 	private String ToXml(Object request) {
 
 		XStream xstream = new XStream(new DomDriver());
 
-	
 		xstream.alias("transaction-request", TransactionRequest.class);
 		xstream.aliasField("void", Order.class, "_void");
 		xstream.aliasField("return", Order.class, "_return");
 		xstream.alias("api-request", ApiRequest.class);
 		xstream.alias("rapi-request", RapiRequest.class);
-		
+	
 		
 		String xml = xstream.toXML(request);
 
@@ -136,10 +153,16 @@ class Utils {
 		return xml;
 	}
 	
-
+	/**
+	 * Retorna a url de acordo com o ambiente
+	 * Return the environment request URL
+	 * @param request
+	 * @param environment
+	 * @return
+	 * @throws Exception
+	 */
 	private String GetUrl(Object request, String environment) throws Exception {
 
-		
 		int type = 0;
 		
 		if("LIVE".equals(environment))
@@ -171,13 +194,20 @@ class Utils {
                 else if (request instanceof RapiRequest)
                     return "https://testapi.maxipago.net/ReportsAPI/servlet/ReportsAPI";
                 break;
-          
+           
         }
 
         throw new Exception("You must to inform the environment. (TEST or LIVE)");
     }
 	
 	
+	/**
+	 * Retorna a resposta e efetua o parse dos dados
+	 * Return the response and make the parse of returned data
+	 * @param responseContent
+	 * @return
+	 * @throws Exception
+	 */
 	private ResponseBase ParseResponse(String responseContent) throws Exception {
 
 		if(responseContent == null)
@@ -194,13 +224,30 @@ class Utils {
         }
         else if (responseContent.contains("rapi-response")) {
         	
-        	String result = responseContent.replaceFirst("<customerId>", "<customerId1>");
-        	result = result.replaceFirst("</customerId>", "</customerId1>");
-        	responseContent = result.replaceFirst("<customerId/>", "<customerId1/>");
+        	String [] teste = responseContent.split("<record>");
+        	
+        	String correctResponse = null;
+        	
+        	//The code below inside "for" is necessary to hack the response error when the response came more than one field customerId in the same xml node.
+        	//O código abaixo dentro do "for" é necessário para reparar um erro quando o response retorna mais de um campo customerID no mesmo nó do xml.
+        	for(int i = 0; i<teste.length; i ++) {
+        		
+        		if(i==0) {
+        			correctResponse = teste[i];
+        			continue;
+        		}
+        		
+        		String record = "<record>" + teste[i].replaceFirst("<customerId>", "<customerId1>");
+        		record = record.replaceFirst("</customerId>", "</customerId1>");
+            	record = record.replaceFirst("<customerId/>", "<customerId1/>");
+            	
+            	correctResponse += record;
+        		
+        	}
         	
         	xstream.alias("rapi-response", RapiResponse.class);
         	xstream.addImplicitCollection(Records.class, "record", "record", Record.class);
-			return (RapiResponse) xstream.fromXML(responseContent);
+			return (RapiResponse) xstream.fromXML(correctResponse);
 			
         }
         else if (responseContent.contains("api-error")) {
