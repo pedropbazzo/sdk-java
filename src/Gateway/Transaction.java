@@ -29,7 +29,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Sale method
+	 * Método Sale
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -63,8 +63,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * FillRequestBase method
-	 * Populates requestBase with default params
+	 * Método FillRequestBase
+	 * Popula o requestBase com as informacoes em comum a todos os mÃ©todos.
 	 * @param operation
 	 * @param merchantId
 	 * @param merchantKey
@@ -107,10 +107,12 @@ public class Transaction extends ServiceBase {
 			Payment payment = new Payment();
 			rBase.setPayment(payment);
 			payment.setChargeTotal(chargeTotal);
-			payment.setCurrencyCode(currencyCode);
 			
-			// Verifies installment piece
-			if ((numberOfInstallments != null || chargeInterest != null) && numberOfInstallments != "1") {
+			if(currencyCode != null && currencyCode.length() > 0)
+				payment.setCurrencyCode(currencyCode);
+			
+			//Verifica se vai precisar criar o n de parcelas e juros.
+			if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
 				
 				payment.setCreditInstallment(new CreditInstallment());
 				payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
@@ -133,7 +135,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Full sale method
+	 * Método Sale completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -217,8 +219,8 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Sale method
-	 * With credit card token
+	 * Método Sale
+	 * Faz uma autorizacao com captura passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -244,8 +246,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Sale method
-     * Saves a card automatically
+     * Método Sale
+     * Faz uma autorizacao com captura salvando o numero de cartao automaticamente.
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -294,7 +296,7 @@ public class Transaction extends ServiceBase {
     }
 	
     /**
-     * Auth method
+     * Método Auth
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -329,7 +331,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Full Auth method
+	 * Método Auth completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -413,8 +415,8 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Auth method
-	 * With credit card token
+	 * Método Auth
+	 * Faz uma autorizacao passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -441,8 +443,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Auth method
-     * Saves a card automatically
+     * Método Auth
+     * Faz uma autorizacao salvando o numero de cartao automaticamente.
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -491,7 +493,8 @@ public class Transaction extends ServiceBase {
     }
     
 	/**
-	 * Boleto method
+	 * Método Boleto
+	 * Faz uma requisicao de boleto.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -562,7 +565,8 @@ public class Transaction extends ServiceBase {
 
     
     /**
-     * PayWithToken method
+     * Método PayWithToken
+     * Faz a transacao passando o token do cartao ja salvo na base.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -598,9 +602,12 @@ public class Transaction extends ServiceBase {
         Payment payment = new Payment();
         rBase.setPayment(payment);
         payment.setChargeTotal(chargeTotal);
-        payment.setCurrencyCode(currencyCode);
-        //Verifica se vai precisar criar o nÃ³ de parcelas e juros.
-        if ((numberOfInstallments != null || chargeInterest != null) && numberOfInstallments != "1") {
+        
+        if(currencyCode != null && currencyCode.length() > 0)
+        	payment.setCurrencyCode(currencyCode);
+
+        //Verifica se vai precisar criar o n de parcelas e juros.
+        if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
   					
   			payment.setCreditInstallment(new CreditInstallment());
   			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
@@ -620,8 +627,8 @@ public class Transaction extends ServiceBase {
     }
     
     /**
-     * PaySavingCreditCardAutomatically
-     * Saves a card automatically
+     * Método PaySavingCreditCardAutomatically
+     * Passa uma transacao salvando o numero de cartao automaticamente.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -692,10 +699,12 @@ public class Transaction extends ServiceBase {
         Payment payment = new Payment();
         rBase.setPayment(payment);
         payment.setChargeTotal(chargeTotal);
-        payment.setCurrencyCode(currencyCode);
+        
+        if(currencyCode != null && currencyCode.length() > 0)
+        	payment.setCurrencyCode(currencyCode);
 
-      // Verifies installment data
-        if ((numberOfInstallments != null || chargeInterest != null) && numberOfInstallments != "1") {
+      //Verifica se vai precisar criar o n de parcelas e juros.
+        if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
   					
   			payment.setCreditInstallment(new CreditInstallment());
   			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
@@ -728,7 +737,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Capture method
+     * Método Capture
+     * Captura uma transacao.
      * @param merchantId
      * @param merchantKey
      * @param orderID
@@ -753,7 +763,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Return method
+	 * Método Return
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param orderID
@@ -778,7 +788,8 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Void method
+	 * Método void
+	 * Cancela uma transaÃ§Ã£o.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param transactionID
@@ -802,7 +813,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Recurring method
+	 * Método Recurring
+	 * Faz uma recorrencia.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -854,7 +866,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Recurring with token method
+	 * Método Recurring
+	 * Efetua um Recurring com token
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -900,7 +913,7 @@ public class Transaction extends ServiceBase {
 	
 
 	/**
-	 * FillRecurringBase
+	 * Método FillRecurringBase
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -938,10 +951,12 @@ public class Transaction extends ServiceBase {
 		Payment payment = new Payment();
 		recurringPayment.setPayment(payment);
 		payment.setChargeTotal(chargeTotal);
-		payment.setCurrencyCode(currencyCode);
 		
-		// Verifies installment data
-		if ((numberOfInstallments != null || chargeInterest != null) && numberOfInstallments != "1") {
+		if(currencyCode != null && currencyCode.length() > 0)
+			payment.setCurrencyCode(currencyCode);
+		
+		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
+		if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
 			
 			payment.setCreditInstallment(new CreditInstallment());
 			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
@@ -963,7 +978,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * OnlineDebit  method
+	 * Método OnlineDebit
+	 * Faz uma transaï¿½â€¹o de dÅ½bito.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
