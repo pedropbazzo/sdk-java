@@ -2,14 +2,29 @@ package maxiPago.DataContract.Transactional;
 
 public class SaveOnFile {
 
+	/*
+	 * ID ?nico do cadastro, retornado quando o cliente foi adicionado ? base (customerId).
+	 */
     private String customerToken;
 
+    /*
+     * Data limite para manter o cart?o na base, Formato MM/DD/AAAA.
+     */
     private String onFileEndDate;
 
-    private String onFilePermission;
+    /*
+     * Dura??o limite do uso do cart?o salvo, ongoing = indefinidamente, use_once = apenas uma vez ap?s a 1a. cobran?a
+     */
+    private String onFilePermissions;
 
+    /*
+     * Coment?rios adicionais sobre este cart?o
+     */
     private String onFileComment;
 
+    /*
+     * Valor m?ximo que ? permitido cobrar deste cart?o
+     */
     private String onFileMaxChargeAmount;
 
 	public String getCustomerToken() {
@@ -29,11 +44,11 @@ public class SaveOnFile {
 	}
 
 	public String getOnFilePermission() {
-		return onFilePermission;
+		return onFilePermissions;
 	}
 
 	public void setOnFilePermission(String onFilePermission) {
-		this.onFilePermission = onFilePermission;
+		this.onFilePermissions = onFilePermission;
 	}
 
 	public String getOnFileComment() {

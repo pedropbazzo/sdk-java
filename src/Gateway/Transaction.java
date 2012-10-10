@@ -29,7 +29,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método Sale
+	 * M?todo Sale
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -63,8 +63,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método FillRequestBase
-	 * Popula o requestBase com as informacoes em comum a todos os mÃ©todos.
+	 * M?todo FillRequestBase
+	 * Popula o requestBase com as informacoes em comum a todos os métodos.
 	 * @param operation
 	 * @param merchantId
 	 * @param merchantKey
@@ -111,7 +111,7 @@ public class Transaction extends ServiceBase {
 			if(currencyCode != null && currencyCode.length() > 0)
 				payment.setCurrencyCode(currencyCode);
 			
-			//Verifica se vai precisar criar o n de parcelas e juros.
+			//Verifica se vai precisar criar o nó de parcelas e juros.
 			if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
 				
 				payment.setCreditInstallment(new CreditInstallment());
@@ -135,7 +135,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Método Sale completo
+	 * M?todo Sale completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -331,7 +331,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método Auth completo
+	 * M?todo Auth completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -415,7 +415,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Método Auth
+	 * M?todo Auth
 	 * Faz uma autorizacao passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
@@ -443,8 +443,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Método Auth
-     * Faz uma autorizacao salvando o numero de cartao automaticamente.
+     * M?todo Auth
+     * Faz uma autorizacao salvando o numero de cartão automaticamente.
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -493,8 +493,8 @@ public class Transaction extends ServiceBase {
     }
     
 	/**
-	 * Método Boleto
-	 * Faz uma requisicao de boleto.
+	 * M?todo Boleto
+	 * Faz uma requisição de boleto.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -565,8 +565,8 @@ public class Transaction extends ServiceBase {
 
     
     /**
-     * Método PayWithToken
-     * Faz a transacao passando o token do cartao ja salvo na base.
+     * M?todo PayWithToken
+     * Faz a transação passando o token do cartão já salvo na base.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -606,7 +606,7 @@ public class Transaction extends ServiceBase {
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
 
-        //Verifica se vai precisar criar o n de parcelas e juros.
+        //Verifica se vai precisar criar o nó de parcelas e juros.
         if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
   					
   			payment.setCreditInstallment(new CreditInstallment());
@@ -627,8 +627,8 @@ public class Transaction extends ServiceBase {
     }
     
     /**
-     * Método PaySavingCreditCardAutomatically
-     * Passa uma transacao salvando o numero de cartao automaticamente.
+     * M?todo PaySavingCreditCardAutomatically
+     * Passa uma transação salvando o número de cartão automaticamente.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -703,7 +703,7 @@ public class Transaction extends ServiceBase {
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
 
-      //Verifica se vai precisar criar o n de parcelas e juros.
+      //Verifica se vai precisar criar o nó de parcelas e juros.
         if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
   					
   			payment.setCreditInstallment(new CreditInstallment());
@@ -737,8 +737,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Método Capture
-     * Captura uma transacao.
+     * M?todo Capture
+     * Captura uma transação.
      * @param merchantId
      * @param merchantKey
      * @param orderID
@@ -763,7 +763,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Método Return
+	 * M?todo Return
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param orderID
@@ -788,8 +788,8 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Método void
-	 * Cancela uma transaÃ§Ã£o.
+	 * M?todo void
+	 * Cancela uma transação.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param transactionID
@@ -813,7 +813,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método Recurring
+	 * M?todo Recurring
 	 * Faz uma recorrencia.
 	 * @param merchantId
 	 * @param merchantKey
@@ -828,7 +828,6 @@ public class Transaction extends ServiceBase {
 	 * @param numberOfInstallments
 	 * @param chargeInterest
 	 * @param ipAddress
-	 * @param customerIdExt
 	 * @param action
 	 * @param startDate
 	 * @param frequency
@@ -841,12 +840,12 @@ public class Transaction extends ServiceBase {
 	 */
 	public ResponseBase Recurring(String merchantId, String merchantKey, String referenceNum, double chargeTotal
 			, String creditCardNumber, String expMonth, String expYear, String cvvInd, String cvvNumber, String processorId
-			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String action
+			, String numberOfInstallments, String chargeInterest, String ipAddress, String action
 			, String startDate, String frequency, String period, String installments, String failureThreshold
 			, String currencyCode) throws Exception {
 		
 		FillRecurringBase(merchantId, merchantKey, referenceNum, chargeTotal, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, action, startDate, frequency, period, installments
+				, chargeInterest, ipAddress, action, startDate, frequency, period, installments
 				, failureThreshold, currencyCode);
 		
 		TransactionDetail detail = this.request.getOrder().getRecurringPayment().getTransactionDetail();
@@ -866,7 +865,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método Recurring
+	 * M?todo Recurring
 	 * Efetua um Recurring com token
 	 * @param merchantId
 	 * @param merchantKey
@@ -878,7 +877,6 @@ public class Transaction extends ServiceBase {
 	 * @param numberOfInstallments
 	 * @param chargeInterest
 	 * @param ipAddress
-	 * @param customerIdExt
 	 * @param action
 	 * @param startDate
 	 * @param frequency
@@ -891,12 +889,12 @@ public class Transaction extends ServiceBase {
 	 */
 	public ResponseBase Recurring(String merchantId, String merchantKey, String referenceNum, double chargeTotal
 			, String customerId, String token, String processorId
-			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String action
+			, String numberOfInstallments, String chargeInterest, String ipAddress, String action
 			, String startDate, String frequency, String period, String installments, String failureThreshold
 			, String currencyCode) throws Exception {
 		
 		FillRecurringBase(merchantId, merchantKey, referenceNum, chargeTotal, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, action, startDate, frequency, period, installments
+				, chargeInterest, ipAddress, action, startDate, frequency, period, installments
 				, failureThreshold, currencyCode);
 		
 		TransactionDetail detail = this.request.getOrder().getRecurringPayment().getTransactionDetail();
@@ -913,7 +911,7 @@ public class Transaction extends ServiceBase {
 	
 
 	/**
-	 * Método FillRecurringBase
+	 * M?todo FillRecurringBase
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -922,7 +920,6 @@ public class Transaction extends ServiceBase {
 	 * @param numberOfInstallments
 	 * @param chargeInterest
 	 * @param ipAddress
-	 * @param customerIdExt
 	 * @param action
 	 * @param startDate
 	 * @param frequency
@@ -933,8 +930,8 @@ public class Transaction extends ServiceBase {
 	 */
 	private void FillRecurringBase(String merchantId, String merchantKey, String referenceNum, double chargeTotal
 			, String processorId, String numberOfInstallments, String chargeInterest
-			, String ipAddress, String customerIdExt, String action
-			, String startDate, String frequency, String period, String installments, String failureThreshold
+			, String ipAddress, String action, String startDate
+			, String frequency, String period, String installments, String failureThreshold
 			, String currencyCode) {
 		
 		this.request = new TransactionRequest(merchantId, merchantKey);
@@ -946,7 +943,7 @@ public class Transaction extends ServiceBase {
 		recurringPayment.setReferenceNum(referenceNum);
 		recurringPayment.setProcessorID(processorId);
 		recurringPayment.setIpAddress(ipAddress);
-		recurringPayment.setCustomerIdExt(customerIdExt);
+		//recurringPayment.setCustomerIdExt(customerIdExt);
 
 		Payment payment = new Payment();
 		recurringPayment.setPayment(payment);
@@ -955,7 +952,7 @@ public class Transaction extends ServiceBase {
 		if(currencyCode != null && currencyCode.length() > 0)
 			payment.setCurrencyCode(currencyCode);
 		
-		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
+		//Verifica se vai precisar criar o nó de parcelas e juros.
 		if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
 			
 			payment.setCreditInstallment(new CreditInstallment());
@@ -978,8 +975,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Método OnlineDebit
-	 * Faz uma transaï¿½â€¹o de dÅ½bito.
+	 * M?todo OnlineDebit
+	 * Faz uma transa?‹o de dŽbito.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
