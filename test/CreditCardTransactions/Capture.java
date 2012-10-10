@@ -10,11 +10,11 @@ public class MaxiPagoExample {
             transaction.setEnvironment("TEST");
 
             ResponseBase response = transaction.Capture(
-				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-				"orderID", // REQUIRED - Order ID replied by maxiPago! after authorization //
-				"referenceNum", // REQUIRED - Merchant internal order number //
-				"chargeTotal" // REQUIRED - Transaction amount in US format //
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago!  //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"7F000001:013829A1C09E:8DE9:016891F0", // 'orderID'- REQUIRED: Order ID replied by maxiPago! after authorization //
+				"ORD12397372", // 'referenceNum' - REQUIRED: Merchant internal order number //
+				"23.33" // 'chargeTotal' - REQUIRED: Transaction amount in US format //
 			);		
 
             

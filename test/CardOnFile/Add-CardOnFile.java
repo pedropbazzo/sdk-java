@@ -11,21 +11,21 @@ public class MaxiPagoExample {
 			api.setEnvironment("TEST");
 
 			ApiResponse response = api.AddCardOnFile(
-				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //
-				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-				"customerId", // REQUIRED - Internal merchant customer code //
-				"creditCardNumber", // REQUIRED - Full credit card number //
-				"expirationMonth", // REQUIRED - Credit card expiration month //
-				"expirationYear", // REQUIRED - Credit card expiration year //
-				"billingName", // REQUIRED - Customer name //
-				"billingAddress1", // REQUIRED - Customer address //
-				"billingAddress2", // Optional - Customer address 2 //
-				"billingCity", // REQUIRED - Customer city //
-				"billingState", // REQUIRED - Customer state with 2 characters //
-				"billingZip", // REQUIRED - Customer zip code //
-				"billingCountry", // REQUIRED - Customer country code per ISO 3166-2 //
-				"billingPhone", // REQUIRED - Customer phone number //
-				"billingEmail" // REQUIRED - Customer email address //
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago! //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"29387292", // 'customerId' - REQUIRED and UNIQUE: Internal merchant customer code //
+				"4111111111111111", // 'creditCardNumber' - REQUIRED: Full credit card number //
+				"10", // 'expirationMonth' - REQUIRED: Credit card expiration month with 2 digits //
+				"2012", // 'expirationYear' - REQUIRED: Credit card expiration year with 4 digits //
+				"John Doe", // 'billingName' -  REQUIRED: Customer name //
+				"Rua de Teste, 123", // 'billingAddress1' - REQUIRED: Customer address //
+				"Sala 12", // 'billingAddress2' - Optional: Customer address 2 //
+				"Rio de Janeiro", // 'billingCity' - REQUIRED: Customer city //
+				"RJ", // 'billingState' - REQUIRED: Customer state with 2 characters //
+				"20030000", // 'billingZip' - REQUIRED: Customer zip code //
+				"BR", // 'billingCountry' - REQUIRED: Customer country code per ISO 3166-2 //
+				"551140634666", // 'billingPhone' - REQUIRED: Customer phone number //
+				"support@maxipago.com" // 'billingEmail' - REQUIRED: Customer email address //
 			);
 
 			if(response.getErrorCode().equals("0")) {

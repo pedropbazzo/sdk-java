@@ -11,10 +11,10 @@ public class MaxiPagoExample {
 			api.setEnvironment("TEST");
 			
 			ApiResponse response = api.DeleteCardOnFile(
-				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //
-				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-				"customerId", // REQUIRED - Customer ID created by maxiPago! after the "add-customer" command //
-				"token" // REQUIRED - Credit card token create by maxiPago! //
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago! //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"238292", // 'customerId' - REQUIRED: Customer ID created by maxiPago! after the "add-customer" command //
+				"eBUv/SIBJv0=" // 'token' - REQUIRED: Credit card token create by maxiPago! //
 			);
 			
 			if(response.getErrorCode().equals("0")) {

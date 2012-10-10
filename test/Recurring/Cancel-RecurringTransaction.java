@@ -6,21 +6,19 @@ public class MaxiPagoExample {
 
 		try {
 
-						Api api = new Api();
-						api.setEnvironment("TEST");
+			Api api = new Api();
+			api.setEnvironment("TEST");
 
 			ApiResponse apiResponse = api.CancelRecurring(
-				"merchantId", // Merchant ID assigned by maxiPago! //
-				"merchantKey", // Merchant Key assigned by maxiPago! //
-				"OrderID" // OrderID assigned by maxiPago! when creating the transaction //
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago! //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"C0A8C866:0119C7CF0530:3B39:009770A3" // 'OrderID' - REQUIRED: OrderID assigned by maxiPago! when creating the transaction //
 			);
 
-			if (apiResponse.getErrorMessage().equals("0"))
-				{
+			if (apiResponse.getErrorMessage().equals("0")) {
 				// Cancelamento de recorrência aceita
 			}
-			else
-			{
+			else {
 				// Cancelamento de recorrência negada
 			}
 

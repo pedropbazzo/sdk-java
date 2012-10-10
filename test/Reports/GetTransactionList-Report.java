@@ -3,43 +3,43 @@ import maxiPago.Gateway.Report;
 
 public class MaxiPagoExample {
 
-      public static void main(String[] args) {
-
-               try {
-
-	Report report = new Report();
+	public static void main(String[] args) {
+	
+		try {
+	
+			Report report = new Report();
 			
-	RapiResponse response = report.GetTransactionDetailReport(
-		"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-		"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-		"period", // REQUIRED - Period of search ("today", "yesterday", "range") //
-		"pageSize", // Optional - Number of transactions per page. Max of 100 //
-		"startDate", // REQUIRED if period=range - Start date for filter //
-		"endDate", // REQUIRED if period=range - End date for filter //
-		"startTime", // REQUIRED if period=range - Start time for filter //
-		"endTime", // REQUIRED if period=range - End time for filter //
-		"orderByName", // Optional - Field to order transactions by ("transactionDate", "status", etc) //
-		"orderByDirection", // Optional - Direction of order ("asc" or "desc") //
-		"startRecordNumber", // Optional - '1' by default //
-		"endRecordNumber" // Optional - null by default //
-	);
+			RapiResponse response = report.GetTransactionDetailReport(
+			"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago!  //
+			"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+			"range", // 'period' - REQUIRED: Period of search ("today", "yesterday", "range") //
+			"100", // 'pageSize' - Optional: Number of transactions per page. Max of 100 //
+			"12/25/2012", // 'startDate' - REQUIRED if period=range: Start date for filter MM/DD/YYYY //
+			"12/30/2012", // 'endDate' - REQUIRED if period=range: End date for filter MM/DD/YYYY //
+			"00:00:00", // 'startTime' - REQUIRED if period=range - Start time for filter //
+			"23:59:59", // 'endTime' - REQUIRED if period=range - End time for filter //
+			null, // 'orderByName' - Optional: Field to order transactions by ("transactionDate", "status", etc) //
+			null, // 'orderByDirection' - Optional: Direction of order ("asc" or "desc") //
+			null, // 'startRecordNumber' - Optional: '1' by default //
+			null // 'endRecordNumber' - Optional: null by default //
+			);
 
-	if (response.getHeader().getErrorCode().equals("0")) {
+			if (response.getHeader().getErrorCode().equals("0")) {
 
-                if (response.getResult().getRequestToken() == null) {
-                    //  Success
-                }
-                else {
-                    //  If response.Result.RequestToken != null then must execute 'checkRequestStatus'
-                }
+				if (response.getResult().getRequestToken() == null) {
+					//  Success
+				}
+				else {
+					//  If response.Result.RequestToken != null then must execute 'checkRequestStatus'
+				}
 
-  }
-  else { 
-        // Fail
-  }
+			}
+			else { 
+				// Fail
+			}
 
-              } catch (Exception e) {
-	e.printStackTrace();
-              }
-        }
+		} catch (Exception e) {
+		e.printStackTrace();
+		}
+	}
 }

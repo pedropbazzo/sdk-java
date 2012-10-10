@@ -11,9 +11,9 @@ public class MaxiPagoExample {
 			api.setEnvironment("TEST");
 
 			ApiResponse response = api.DeleteConsumer(
-				"merchantId", // REQUIRED - Merchant ID assigned by maxiPago! //
-				"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-				"customerId" // REQUIRED - Customer ID create by maxiPago! after the "add-customer" command //
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago! //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"2938293" // 'customerId'- REQUIRED: Customer ID create by maxiPago! after the "add-customer" command //
 			);
 
 			if(response.getErrorCode().equals("0")) {

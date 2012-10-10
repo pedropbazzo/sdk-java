@@ -10,10 +10,10 @@ public class MaxiPagoExample {
 				Report report = new Report();
 						
 				RapiResponse response = report.GetTransactionDetailReport(
-					"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-					"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-					"pageToken", // REQUIRED - Token of the page replied by maxiPago! //
-					"pageNumber" // REQUIRED - PAge number you want to view //
+					"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago!  //
+					"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+					"xyz35Hiua834", // 'pageToken' - REQUIRED: Token of the page replied by maxiPago! //
+					"3" // 'pageNumber' - REQUIRED: Page number you want to view //
 				);
 			
 				if (response.getHeader().getErrorCode().equals("0")) {

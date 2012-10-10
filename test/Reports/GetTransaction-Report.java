@@ -3,27 +3,27 @@ import maxiPago.Gateway.Report;
 
 public class MaxiPagoExample {
 
-      public static void main(String[] args) {
-
-               try {
-
-	Report report = new Report();
-			
-	RapiResponse response = report.GetTransactionDetailReport(
-		"merchantId", // REQUIRED - Merchant ID assigned by maxiPago!  //
-		"merchantKey", // REQUIRED - Merchant Key assigned by maxiPago! //
-		"transactionId" // REQUIRED - Transaction ID created by maxiPago! //
-	);
-
-	if (response.getHeader().getErrorCode().equals("0") {
-                //  Success
-}
-else { 
-             //  Fail
-            	}
-
-              } catch (Exception e) {
-	e.printStackTrace();
-              }
-        }
+	public static void main(String[] args) {
+	
+		try {
+	
+			Report report = new Report();
+	
+			RapiResponse response = report.GetTransactionDetailReport(
+				"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago!  //
+				"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
+				"392734" // 'transactionId' - REQUIRED:  Transaction ID created by maxiPago! //
+			);
+	
+			if (response.getHeader().getErrorCode().equals("0") {
+				//  Success
+			}
+			else { 
+				//  Fail
+			}
+	
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+		}
 }
