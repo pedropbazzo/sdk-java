@@ -2,12 +2,8 @@ package maxiPago.DataContract.NonTransactional;
 
 public class CommandRequest {
 
-    // Unique ID returned by maxiPago! after creating a profile
     private String customerId;
-
-    // Merchant internal customer number
     private String customerIdExt;
-
     private String firstName;
     private String lastName;
     private String address1;
@@ -17,15 +13,16 @@ public class CommandRequest {
     private String zip;
     private String phone;
     private String email;
-    // Date of birth (MM-DD-YYYY)   
+
+
     private String dob;
-    // Social security number
+
     private String ssn;
 
     private String sex;
     private String creditCardNumber;
-    private String expirationMonth; // MM
-    private String expirationYear; // YYYY
+    private String expirationMonth;
+    private String expirationYear;
     private String billingName;
     private String billingAddress1;
     private String billingAddress2;
@@ -37,8 +34,11 @@ public class CommandRequest {
     private String billingEmail;
     private String orderId;
 
-
     private String token;
+    private String onFileEndDate;
+    private String onFilePermissions;
+    private String onFileComment;
+    private String onFileMaxChargeAmount;
     
     public String getCustomerId() {
 		return customerId;
@@ -207,6 +207,30 @@ public class CommandRequest {
 	}
 	public void setOrderId(String orderId) {
 		this.orderId = orderId;
+	}
+	public String getOnFileEndDate() {
+		return onFileEndDate;
+	}
+	public void setOnFileEndDate(String onFileEndDate) {
+		this.onFileEndDate = onFileEndDate;
+	}
+	public String getOnFilePermissions() {
+		return onFilePermissions;
+	}
+	public void setOnFilePermission(String onFilePermission) {
+		this.onFilePermissions = onFilePermission;
+	}
+	public String getOnFileComment() {
+		return onFileComment;
+	}
+	public void setOnFileComment(String onFileComment) {
+		this.onFileComment = onFileComment;
+	}
+	public String getOnFileMaxChargeAmount() {
+		return onFileMaxChargeAmount;
+	}
+	public void setOnFileMaxChargeAmount(String onFileMaxChargeAmount) {
+		this.onFileMaxChargeAmount = onFileMaxChargeAmount;
 	}
 	
 	

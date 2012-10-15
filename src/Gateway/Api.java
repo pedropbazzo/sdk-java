@@ -12,9 +12,7 @@ public class Api extends ServiceBase {
 
     private ApiRequest request;
 
-    /*
-     * Adds customer profile
-     */
+
     public ApiResponse AddConsumer(String merchantId, String merchantKey, String customerIdExt, String firstName, String lastName
                                     , String address1, String address2, String city, String state, String zip, String phone, String email
                                     , String dob, String ssn, String sex) throws Exception {
@@ -43,9 +41,7 @@ public class Api extends ServiceBase {
         return (ApiResponse)new Utils().SendRequest(this.request, this.getEnvironment());
     }
     
-    /*
-     * Removes customer profile
-     */
+
     public ApiResponse DeleteConsumer(String merchantId, String merchantKey, String customerId) throws Exception {
 
         this.request = new ApiRequest(merchantId, merchantKey);
@@ -60,9 +56,7 @@ public class Api extends ServiceBase {
 
     }
     
-    /*
-     * Updates customer profile
-     */
+
     public ApiResponse UpdateConsumer(String merchantId, String merchantKey, String customerId, String customerIdExt, String firstName
                                     , String lastName, String address1, String address2, String city, String state, String zip, String phone
                                     , String email, String dob, String ssn, String sex) throws Exception {
@@ -92,12 +86,11 @@ public class Api extends ServiceBase {
     }
     
 
-    /*
-     * Saves a card on file
-     */
+
     public ApiResponse AddCardOnFile(String merchantId, String merchantKey, String customerId, String creditCardNumber, String expirationMonth
                                     , String expirationYear, String billingName, String billingAddress1, String billingAddress2, String billingCity
-                                    , String billingState, String billingZip, String billingCountry, String billingPhone, String billingEmail) throws Exception { 
+                                    , String billingState, String billingZip, String billingCountry, String billingPhone, String billingEmail
+                                    , String onFileEndDate, String onFilePermission, String onFileComment, String onFileMaxChargeAmount) throws Exception { 
 
         this.request = new ApiRequest(merchantId, merchantKey);
 
@@ -118,14 +111,15 @@ public class Api extends ServiceBase {
         commandRequest.setBillingCountry(billingCountry);
         commandRequest.setBillingPhone(billingPhone);
         commandRequest.setBillingEmail(billingEmail);
+        commandRequest.setOnFileEndDate(onFileEndDate);
+        commandRequest.setOnFilePermission(onFilePermission);
+        commandRequest.setOnFileComment(onFileComment);
+        commandRequest.setOnFileMaxChargeAmount(onFileMaxChargeAmount);
 
         return (ApiResponse)new Utils().SendRequest(this.request, this.getEnvironment());
 
     }
     
-    /*
-     * Deletes a card on file
-     */
     public ApiResponse DeleteCardOnFile(String merchantId, String merchantKey, String customerId, String token) throws Exception {
 
         this.request = new ApiRequest(merchantId, merchantKey);
@@ -141,10 +135,7 @@ public class Api extends ServiceBase {
 
     }
     
-    
-    /*
-	 * Cancels a recurring payment
-	 */
+
 	public ApiResponse CancelRecurring(String merchantId, String merchantKey, String orderID) throws Exception{
 			
 		this.request = new ApiRequest(merchantId, merchantKey);

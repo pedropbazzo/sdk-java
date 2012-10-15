@@ -16,14 +16,13 @@ public class TransactionResponse extends ResponseBase {
 	private String processorCode;
 	private String processorMessage;
 	private String errorMessage;
-	
 	private String processorReferenceNumber;
 	private String processorTransactionID;
-	
 	private String boletoUrl;
 	private String authenticationURL;
-	
 	private SaveOnFileResponse saveOnFile;
+
+	private String partiallyApprovedAmount;
 	
 	public String getAuthCode() {
 		return this.authCode;
