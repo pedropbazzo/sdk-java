@@ -20,8 +20,9 @@ public class TransactionResponse extends ResponseBase {
 	private String processorTransactionID;
 	private String boletoUrl;
 	private String authenticationURL;
+	private String fraudScore;
 	private SaveOnFileResponse saveOnFile;
-
+    
 	private String partiallyApprovedAmount;
 	
 	public String getAuthCode() {
@@ -86,6 +87,10 @@ public class TransactionResponse extends ResponseBase {
 
 	public String getAuthenticationURL() {
 		return authenticationURL;
+	}
+
+	public String getFraudScore() {
+		return fraudScore;
 	}
 
 	public SaveOnFileResponse getSaveOnFile() {

@@ -19,7 +19,17 @@ public class RequestBase {
 	public void setProcessorID(String processorID) {
 		this.processorID = processorID;
 	}
+		
+	private String fraudCheck;
 	
+	public String getFraudCheck() {
+		return fraudCheck;
+	}
+
+	public void setFraudCheck(String fraudCheck) {
+		this.fraudCheck = fraudCheck;
+	}
+
 	public String authentication;
 
 	public String getAuthentication() {
@@ -120,4 +130,6 @@ public class RequestBase {
 		this.saveOnFile = saveOnFile;
 	}
 	
+	
+
 }
