@@ -30,23 +30,19 @@ public class Transaction extends ServiceBase {
 	
 	/**
 	 * Metodo Sale
-	 * @param merchantId
-	 * @param merchantKey
+	 * @param merchantId 
+	 * @param merchantKey 
 	 * @param referenceNum
-	 * @param chargeTotal
-	 * @param creditCardNumber
+	 * @param chargeTotal 
+	 * @param creditCardNumber 
 	 * @param expMonth
-	 * @param expYear
-	 * @param cvvInd
-	 * @param cvvNumber
+	 * @param expYear 
+	 * @param cvvInd 
+	 * @param cvvNumber 
 	 * @param authentication
-	 * @param processorId
-	 * @param numberOfInstallments
-	 * @param chargeInterest
-	 * @param ipAddress
-	 * @param customerIdExt
-	 * @param currencyCode
-	 * @param fraudCheck
+	 * @param processorId 
+	 * @param numberOfInstallments @param chargeInterest
+	 * @param ipAddress  @param customerIdExt @param currencyCode @param fraudCheck
 	 * @return
 	 * @throws Exception
 	 */
@@ -64,8 +60,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo FillRequestBase
-	 * Popula o requestBase com as informacoes em comum a todos os metodos.
+	 * Método FillRequestBase
+	 * Popula o requestBase com as informacoes em comum a todos os Métodos.
 	 * @param operation
 	 * @param merchantId
 	 * @param merchantKey
@@ -115,12 +111,14 @@ public class Transaction extends ServiceBase {
 			if(currencyCode != null && currencyCode.length() > 0)
 				payment.setCurrencyCode(currencyCode);
 			
+			int tranInstallments = Integer.parseInt(numberOfInstallments);
+			
 			//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
-			if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
+			if ((chargeInterest != null && chargeInterest.length() > 0) && tranInstallments > 1 ) {
 				
 				payment.setCreditInstallment(new CreditInstallment());
 				payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
-				payment.getCreditInstallment().setNumberOfInstallments(numberOfInstallments);
+				payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
 				
 			}
 			
@@ -139,7 +137,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Sale completo
+	 * Método Sale completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -224,7 +222,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Sale
+	 * Método Sale
 	 * Faz uma autorizacao com captura passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
@@ -237,7 +235,6 @@ public class Transaction extends ServiceBase {
 	 * @param chargeInterest
 	 * @param ipAddress
 	 * @param currencyCode
-	 * @param fraudCheck
 	 * @return
 	 * @throws Exception
 	 */
@@ -250,9 +247,9 @@ public class Transaction extends ServiceBase {
         
     }
     
-  
+   
     /**
-     * Metodo Sale
+     * Método Sale
      * Faz uma autorizacao com captura salvando o numero de cartao automaticamente.
      * @param merchantId
      * @param merchantKey
@@ -282,7 +279,6 @@ public class Transaction extends ServiceBase {
      * @param billingPhone
      * @param billingEmail
      * @param currencyCode
-     * @param fraudCheck
      * @return
      * @throws Exception
      */
@@ -303,7 +299,7 @@ public class Transaction extends ServiceBase {
     }
 	
     /**
-     * Metodo Auth
+     * Método Auth
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -319,7 +315,7 @@ public class Transaction extends ServiceBase {
      * @param chargeInterest
      * @param ipAddress
      * @param customerIdExt
-     * @param currencyCode
+     * @param CurrencyCode
      * @param fraudCheck
      * @return
      * @throws Exception
@@ -339,7 +335,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Auth completo
+	 * Método Auth completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -426,7 +422,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Auth
+	 * Método Auth
 	 * Faz uma autorizacao passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
@@ -455,8 +451,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Metodo Auth
-     * Faz uma autorizacao salvando o numero de cartao automaticamente.
+     * Método Auth
+     * Faz uma autorizacao salvando o numero de cartÃ£o automaticamente.
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -506,8 +502,8 @@ public class Transaction extends ServiceBase {
     }
     
 	/**
-	 * Metodo Boleto
-	 * Faz uma requisicao de boleto.
+	 * Método Boleto
+	 * Faz uma requisiÃ§Ã£o de boleto.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -578,8 +574,8 @@ public class Transaction extends ServiceBase {
 
     
     /**
-     * Metodo PayWithToken
-     * Faz a transacao passando o token do cartao ja salvo na base.
+     * Método PayWithToken
+     * Faz a transaÃ§Ã£o passando o token do cartÃ£o jÃ¡ salvo na base.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -622,14 +618,16 @@ public class Transaction extends ServiceBase {
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
 
-        //Verifica se vai precisar criar o nÃ³ de parcelas e juros.
-        if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
-  					
-  			payment.setCreditInstallment(new CreditInstallment());
-  			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
-  			payment.getCreditInstallment().setNumberOfInstallments(numberOfInstallments);
-  					
-  		}
+		int tranInstallments = Integer.parseInt(numberOfInstallments);
+		
+		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
+		if ((chargeInterest != null && chargeInterest.length() > 0) && tranInstallments > 1 ) {
+			
+			payment.setCreditInstallment(new CreditInstallment());
+			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
+			payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
+			
+		}
 
         TransactionDetail detail = rBase.getTransactionDetail();
         PayType payType = detail.getPayType();
@@ -643,8 +641,8 @@ public class Transaction extends ServiceBase {
     }
     
     /**
-     * Metodo PaySavingCreditCardAutomatically
-     * Passa uma transacao salvando o numero de cartao automaticamente.
+     * Método PaySavingCreditCardAutomatically
+     * Passa uma transaÃ§Ã£o salvando o nÃºmero de cartÃ£o automaticamente.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -722,14 +720,16 @@ public class Transaction extends ServiceBase {
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
 
-      //Verifica se vai precisar criar o nÃ³ de parcelas e juros.
-        if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
-  					
-  			payment.setCreditInstallment(new CreditInstallment());
-  			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
-  			payment.getCreditInstallment().setNumberOfInstallments(numberOfInstallments);
-  					
-  		}
+		int tranInstallments = Integer.parseInt(numberOfInstallments);
+		
+		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
+		if ((chargeInterest != null && chargeInterest.length() > 0) && tranInstallments > 1 ) {
+			
+			payment.setCreditInstallment(new CreditInstallment());
+			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
+			payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
+			
+		}
 
         TransactionDetail detail = rBase.getTransactionDetail();
         PayType payType = detail.getPayType();
@@ -756,7 +756,7 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Metodo Capture
+     * Método Capture
      * Captura uma transaÃ§Ã£o.
      * @param merchantId
      * @param merchantKey
@@ -782,7 +782,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Return
+	 * Método Return
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param orderID
@@ -807,7 +807,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo void
+	 * Método void
 	 * Cancela uma transaÃ§Ã£o.
 	 * @param merchantId
 	 * @param merchantKey
@@ -832,7 +832,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Recurring
+	 * Método Recurring
 	 * Faz uma recorrencia.
 	 * @param merchantId
 	 * @param merchantKey
@@ -884,7 +884,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Recurring
+	 * Método Recurring
 	 * Efetua um Recurring com token
 	 * @param merchantId
 	 * @param merchantKey
@@ -930,7 +930,7 @@ public class Transaction extends ServiceBase {
 	
 
 	/**
-	 * Metodo FillRecurringBase
+	 * Método FillRecurringBase
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -971,12 +971,14 @@ public class Transaction extends ServiceBase {
 		if(currencyCode != null && currencyCode.length() > 0)
 			payment.setCurrencyCode(currencyCode);
 		
+		int tranInstallments = Integer.parseInt(numberOfInstallments);
+		
 		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
-		if (((numberOfInstallments != null && numberOfInstallments.length() > 0) || (chargeInterest != null && chargeInterest.length() > 0)) && numberOfInstallments != "1") {
+		if ((chargeInterest != null && chargeInterest.length() > 0) && tranInstallments > 1 ) {
 			
 			payment.setCreditInstallment(new CreditInstallment());
 			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
-			payment.getCreditInstallment().setNumberOfInstallments(numberOfInstallments);
+			payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
 			
 		}
 
@@ -994,8 +996,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo OnlineDebit
-	 * Faz uma transacao de debito.
+	 * Método OnlineDebit
+	 * Faz uma transaï¿½â€¹o de dÅ½bito.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
