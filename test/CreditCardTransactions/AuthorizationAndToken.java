@@ -19,6 +19,7 @@ public class MaxiPagoExample {
 				"eBUv/SIBJv0=", // 'token' - REQUIRED: Credit card token assigned by maxiPago! //
 				"999", // 'customerId' - REQUIRED: Customer ID created by maxiPago! //
 				"2", // 'numberOfInstallments' - Optional: Number of installments for credit card purchases ("parcelas") //
+				   // Send 'null' if no installments are used //
 				"N", // 'chargeInterest' - Optional: Charge interest flag (Y/N) for installment purchase ("com" e "sem" juros) //
 				"127.0.01", // 'ipAddress' - Optional //
 				null, // 'customerIdExt' - Optional: Merchant internal customer number //

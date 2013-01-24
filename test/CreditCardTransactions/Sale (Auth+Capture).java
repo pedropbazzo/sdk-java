@@ -23,6 +23,7 @@ public class MaxiPagoExample {
 				null, // 'authentication' - Optional: Valid only for Cielo. Please see full documentation for more info //
 				"1", // 'processorId' - REQUIRED: Acquirer code for transaction routing Use '1' for testing. //
 				"2", // 'numberOfInstallments' - Optional: Number of installments for credit card purchases ("parcelas") //
+				   // Send 'null' if no installments are used //
 				"N", // 'chargeInterest' - Optional: Charge interest flag (Y/N) for installment purchase ("com" e "sem" juros) //
 				"1270.0.1", // 'ipAddress' - Optional //
 				null // 'customerIdExt' - Optional: Merchant internal customer number //
