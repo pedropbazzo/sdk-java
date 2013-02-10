@@ -57,38 +57,34 @@ You also need to provide your Merchant Credentials, which is done by adding the 
 
 This is the complete list of actions that can be executed using this library
 
-* **Credit Card Transactions**
- * Authorization
- * Capture
- * Sale (Authorization + Capture)
- * Token Authorization (Authorization with saved card) 
- * Token Sale (Sale with saved card)
- * Automatically save card 
- * Void
- * Refund
+#####Credit Card Transactions#####
+* Authorization
+* Capture
+* Sale (Authorization + Capture)
+* Token Authorization (Authorization with saved card) 
+* Token Sale (Sale with saved card)
+* Automatically save card 
+* Void
+* Refund
  
+#####Recurring Transactions#####
+* Create recurring credit card billing 
  
-* **Recurring Transactions**
- * Create recurring credit card billing 
- 
- 
-* **Boleto Transactions**
- * Create boleto payment slip (Brazil only)
+#####Boleto Transactions#####
+* Create boleto payment slip (Brazil only)
 
+#####Reports#####
+* Query one single transaction 
+* Query a list of transactions 
+* Flip through pages of a transaction list 
+* Query a pending report 
 
-* **Reports**
- * Query one single transaction 
- * Query a list of transactions 
- * Flip through pages of a transaction list 
- * Query a pending report 
-
-
-* **Customer Profile / Card On File**
- * Create a profile *(a customer profile must be created before saving a card)*
- * Update a profile 
- * Remove a profile 
- * Add a credit card
- * Remove a credit card
+#####Customer Profile / Card On File#####
+* Create a profile *(a customer profile must be created before saving a card)*
+* Update a profile 
+* Remove a profile 
+* Add a credit card
+* Remove a credit card
 
 
 ## Requests ##
