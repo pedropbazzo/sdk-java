@@ -13,10 +13,11 @@ Configurar a biblioteca é bem simples: basta baixar o arquivo [maxiPago.jar](ht
 
 Para importação use o código a seguir:
 
-		import maxiPago.DataContract.ResponseBase;
-		import maxiPago.Gateway.Transaction; 
-		import maxiPago.DataContract.Transactional.TransactionResponse;
-
+```java
+	import maxiPago.DataContract.ResponseBase;
+	import maxiPago.Gateway.Transaction; 
+	import maxiPago.DataContract.Transactional.TransactionResponse;
+```
 
 ## Ambiente e Credenciais ##
 
@@ -26,9 +27,11 @@ A **maxiPago!** oferece um ambiente de teste (*"sandbox"*) totalmente funcional 
 
 Para definier o ambiente use este código:
 
-		transaction.setEnvironment("TEST")
-		transaction.setEnvironment("LIVE")
-		
+```java
+	transaction.setEnvironment("TEST")
+	transaction.setEnvironment("LIVE")
+```	
+
 Você também precisa informar as suas Credenciais colocando as variáveis **merchantId** e **merchantKey** em cada requisição
 
 

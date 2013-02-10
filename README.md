@@ -13,10 +13,11 @@ Setup is pretty straightforward: simply download the [maxiPago.jar](http://www.m
 
 To import use the following code:
 
+```java
 		import maxiPago.DataContract.ResponseBase;
 		import maxiPago.Gateway.Transaction; 
 		import maxiPago.DataContract.Transactional.TransactionResponse;
-
+```
 
 ## Environment and Credentials ##
 
@@ -26,9 +27,11 @@ In order to send requests you will need valid Merchant Credentials. They can be 
 
 The environment can be set using:
 
+```java
 		transaction.setEnvironment("TEST")
 		transaction.setEnvironment("LIVE")
-		
+```
+
 You also need to provide your Merchant Credentials, which is done by adding the **merchantId** and **merchantKey** fields in each request made.
 
 
