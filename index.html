@@ -27,7 +27,17 @@
         </ul>
       </header>
       <section>
-        <h2>Introduction</h2>
+        <h2>Index</h2>
+
+<ol>
+<li><a href="#intro">Intro</a></li>
+<li><a href="#setup">Setup</a></li>
+<li><a href="#credentials">Environment and Credentials</a></li>
+<li><a href="#types">Transaction types</a></li>
+<li><a href="#methods">Methods</a></li>
+<li><a href="#requests">Request</a></li>
+<li><a href="#support">Support</a></li>
+</ol><h2>Introduction</h2>
 
 <p>This <strong>Java</strong> library allows for easy integration with the <strong>maxiPago! Smart Payments</strong> API. Our payment platform allows online merchants to accept payments in many countries in Latin America, and the US, and includes such functionalities as Automated Recurring Billing, "Single-Click" payments, Online Returns, Credit Card Payment Reconciliation, Fraud Tools and more. You can find out more about <strong>maxiPago!</strong> by visiting <a href="http://www.maxipago.com/">www.maxipago.com</a>.</p>
 
@@ -41,10 +51,10 @@
 
 <p>To import use the following code:</p>
 
-<pre><code>    import maxiPago.DataContract.ResponseBase;
-    import maxiPago.Gateway.Transaction; 
-    import maxiPago.DataContract.Transactional.TransactionResponse;
-</code></pre>
+<div class="highlight"><pre>        <span class="kn">import</span> <span class="nn">maxiPago.DataContract.ResponseBase</span><span class="o">;</span>
+        <span class="kn">import</span> <span class="nn">maxiPago.Gateway.Transaction</span><span class="o">;</span> 
+        <span class="kn">import</span> <span class="nn">maxiPago.DataContract.Transactional.TransactionResponse</span><span class="o">;</span>
+</pre></div>
 
 <h2>Environment and Credentials</h2>
 
@@ -54,9 +64,9 @@
 
 <p>The environment can be set using:</p>
 
-<pre><code>    transaction.setEnvironment("TEST")
-    transaction.setEnvironment("LIVE")
-</code></pre>
+<div class="highlight"><pre>        <span class="n">transaction</span><span class="o">.</span><span class="na">setEnvironment</span><span class="o">(</span><span class="s">"TEST"</span><span class="o">)</span>
+        <span class="n">transaction</span><span class="o">.</span><span class="na">setEnvironment</span><span class="o">(</span><span class="s">"LIVE"</span><span class="o">)</span>
+</pre></div>
 
 <p>You also need to provide your Merchant Credentials, which is done by adding the <strong>merchantId</strong> and <strong>merchantKey</strong> fields in each request made.</p>
 
@@ -80,7 +90,7 @@
 
 <p>This is the complete list of actions that can be executed using this library</p>
 
-<h4>Credit Card Transactions</h4>
+<h5>Credit Card Transactions</h5>
 
 <ul>
 <li>Authorization</li>
@@ -91,22 +101,22 @@
 <li>Automatically save card </li>
 <li>Void</li>
 <li>Refund</li>
-</ul><h4>Recurring Transactions</h4>
+</ul><h5>Recurring Transactions</h5>
 
 <ul>
 <li>Create recurring credit card billing </li>
-</ul><h4>Boleto Transactions</h4>
+</ul><h5>Boleto Transactions</h5>
 
 <ul>
 <li>Create boleto payment slip (Brazil only)</li>
-</ul><h4>Reports</h4>
+</ul><h5>Reports</h5>
 
 <ul>
 <li>Query one single transaction </li>
 <li>Query a list of transactions </li>
 <li>Flip through pages of a transaction list </li>
 <li>Query a pending report </li>
-</ul><h4>Customer Profile / Card On File</h4>
+</ul><h5>Customer Profile / Card On File</h5>
 
 <ul>
 <li>Create a profile <em>(a customer profile must be created before saving a card)</em>
@@ -121,7 +131,7 @@
 
 <h2>Support</h2>
 
-<p>Our support team is happy to help you with any questions you might have, be it about the functionalities of our platform or about payments in general. They are available to customers and non-customers alike: <a href="mailto:support@maxipago.com">drop us an email</a>!</p>
+<p>Our support team is happy to help you with any questions you might have, be it about the functionalities of our platform or about payments in general. They are available to customers and non-customers alike and can be reached at support [@] maxipago [.] com.</p>
       </section>
     </div>
     <footer>
