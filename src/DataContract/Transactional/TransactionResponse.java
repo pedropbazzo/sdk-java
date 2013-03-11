@@ -22,7 +22,10 @@ public class TransactionResponse extends ResponseBase {
 	private String authenticationURL;
 	private String fraudScore;
 	private SaveOnFileResponse saveOnFile;
+	private String onlineDebitUrl;
     
+	//Atributo somente usando nos EUA, por isso nao tem get e set.
+	//mas precisa existir aqui para evitar erro no parse do xml de resposta.
 	private String partiallyApprovedAmount;
 	
 	public String getAuthCode() {
@@ -39,6 +42,10 @@ public class TransactionResponse extends ResponseBase {
 
 	public String getTransactionID() {
 		return this.transactionID;
+	}
+
+	public void setTransactionTimestamp(String transactionTimestamp) {
+		this.transactionTimestamp = transactionTimestamp;
 	}
 
 	public String getTransactionTimestamp() {
@@ -95,6 +102,10 @@ public class TransactionResponse extends ResponseBase {
 
 	public SaveOnFileResponse getSaveOnFile() {
 		return saveOnFile;
+	}
+	
+	public String getOnlineDebitURL() {
+		return onlineDebitUrl;
 	}
 	
 }

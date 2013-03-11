@@ -52,8 +52,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo FillRequestBase
-	 * Popula o requestBase com as informacoes em comum a todos os Metodos.
+	 * M�todo FillRequestBase
+	 * Popula o requestBase com as informacoes em comum a todos os métodos.
 	 * @param operation
 	 * @param merchantId
 	 * @param merchantKey
@@ -132,7 +132,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Sale completo
+	 * M�todo Sale completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -217,7 +217,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Sale
+	 * Método Sale
 	 * Faz uma autorizacao com captura passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
@@ -244,7 +244,7 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Metodo Sale
+     * Método Sale
      * Faz uma autorizacao com captura salvando o numero de cartao automaticamente.
      * @param merchantId
      * @param merchantKey
@@ -294,7 +294,7 @@ public class Transaction extends ServiceBase {
     }
 	
     /**
-     * Metodo Auth
+     * Método Auth
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -330,7 +330,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Auth completo
+	 * M�todo Auth completo
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -417,7 +417,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Auth
+	 * M�todo Auth
 	 * Faz uma autorizacao passando o token do cartao ja salvo na base.
 	 * @param merchantId
 	 * @param merchantKey
@@ -446,8 +446,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Metodo Auth
-     * Faz uma autorizacao salvando o numero de cartao automaticamente.
+     * M�todo Auth
+     * Faz uma autorizacao salvando o numero de cartão automaticamente.
      * @param merchantId
      * @param merchantKey
      * @param referenceNum
@@ -497,8 +497,8 @@ public class Transaction extends ServiceBase {
     }
     
 	/**
-	 * Metodo Boleto
-	 * Faz uma requisicao de boleto.
+	 * M�todo Boleto
+	 * Faz uma requisição de boleto.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -569,8 +569,8 @@ public class Transaction extends ServiceBase {
 
     
     /**
-     * Metodo PayWithToken
-     * Faz a transacao passando o token do cartao ja salvo na base.
+     * M�todo PayWithToken
+     * Faz a transação passando o token do cartão já salvo na base.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -639,8 +639,8 @@ public class Transaction extends ServiceBase {
     }
     
     /**
-     * Metodo PaySavingCreditCardAutomatically
-     * Passa uma transacao salvando o numero de cartao automaticamente.
+     * M�todo PaySavingCreditCardAutomatically
+     * Passa uma transação salvando o número de cartão automaticamente.
      * @param operation
      * @param merchantId
      * @param merchantKey
@@ -757,8 +757,8 @@ public class Transaction extends ServiceBase {
     
    
     /**
-     * Metodo Capture
-     * Captura uma transacao.
+     * M�todo Capture
+     * Captura uma transação.
      * @param merchantId
      * @param merchantKey
      * @param orderID
@@ -783,7 +783,7 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo Return
+	 * M�todo Return
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param orderID
@@ -808,8 +808,8 @@ public class Transaction extends ServiceBase {
 	}
 	
 	/**
-	 * Metodo void
-	 * Cancela uma transacao.
+	 * M�todo void
+	 * Cancela uma transação.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param transactionID
@@ -833,7 +833,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Recurring
+	 * M�todo Recurring
 	 * Faz uma recorrencia.
 	 * @param merchantId
 	 * @param merchantKey
@@ -885,7 +885,7 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo Recurring
+	 * M�todo Recurring
 	 * Efetua um Recurring com token
 	 * @param merchantId
 	 * @param merchantKey
@@ -931,7 +931,7 @@ public class Transaction extends ServiceBase {
 	
 
 	/**
-	 * Metodo FillRecurringBase
+	 * M�todo FillRecurringBase
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -1000,8 +1000,8 @@ public class Transaction extends ServiceBase {
 	
 	
 	/**
-	 * Metodo OnlineDebit
-	 * Faz uma transacao de debito.
+	 * M�todo OnlineDebit
+	 * Faz uma transa�‹o de dŽbito.
 	 * @param merchantId
 	 * @param merchantKey
 	 * @param referenceNum
@@ -1035,6 +1035,9 @@ public class Transaction extends ServiceBase {
 
         OnlineDebit debit = new OnlineDebit();
         payType.setOnlineDebit(debit);
+        
+        if(parametersUrl == null)
+        	parametersUrl = "";
         
         debit.setParametersUrl(parametersUrl);
 

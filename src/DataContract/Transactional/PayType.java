@@ -42,6 +42,8 @@ public class PayType {
 	public void setOnlineDebit(OnlineDebit onlineDebit) { 
 		this.onlineDebit = onlineDebit; 
 	}
+	
 
+	// private Token token;
 
 }
