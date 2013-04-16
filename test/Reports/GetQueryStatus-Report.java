@@ -8,7 +8,8 @@ public class MaxiPagoExample {
 		try {
 	
 		Report report = new Report();
-	
+        report.setEnvironment("TEST");	
+
 		RapiResponse response = report.CheckRequestStatus(
 		"100", // 'merchantId' - REQUIRED: Merchant ID assigned by maxiPago!  //
 		"merchant-key", // 'merchantKey' - REQUIRED: Merchant Key assigned by maxiPago! //
