@@ -24,7 +24,7 @@ public class MaxiPagoExample {
 		"20030000", // 'zipCode' - Optional: Customer zip code //
 		"551140634666", // 'phone' - Optional: Customer phone number //
 		"support@maxipago.com", // 'email' - Optional: Customer email address //
-		"12-25-1970", //  'dob' - Optional: Customer date of birth (MM-DD-YYYY) //
+		"12/25/1970", //  'dob' - Optional: Customer date of birth (MM/DD/YYYY) //
 		"2947392739383", // 'ssn' - Optional: Customer official ID number //
 		"M" // 'sex' - Optional: Customer gender (M/F) //
 		);
