@@ -25,13 +25,13 @@ public class MaxiPagoExample {
         "2", // 'numberOfInstallments' - Optional: Number of installments for credit card purchases ("parcelas") //
         "N", // 'chargeInterest' - Optional: Charge interest flag (Y/N) for installment purchase ("com" e "sem" juros) //
         "127.0.0.1", // 'ipAddress' - Optional //
-        null // 'customerIdExt' - Optional, Merchant internal customer number // 
         "new", // 'action' - REQUIRED for this command - Always 'new' //
         "2013-12-25", // 'startDate' - REQUIRED: Date of the 1st purchase (YYYY-MM-DD format) //
         "1", // 'frequency' - REQUIRED: Billing frequency ("1", "3", "6", ...) //
         "monthly", // 'period' - REQUIRED: Period of billing ("daily", "weekly" or "monthly") //
         "12", // 'installments' - REQUIRED: Number of payments to be executed //
         "2" // 'failureThreshold' - REQUIRED: Number of retries if transaction fails //
+        null // 'currencyCode' - Optional, currency code // 
       );
       
       
