@@ -2,6 +2,9 @@ package maxiPago.DataContract.NonTransactional;
 
 public class CommandRequest {
 
+	/// <summary>
+    /// ID único do cadastro, retornado quando o cliente foi adicionado à base.
+    /// </summary>
     private String customerId;
     private String customerIdExt;
     private String firstName;
@@ -13,12 +16,17 @@ public class CommandRequest {
     private String zip;
     private String phone;
     private String email;
-
-
+    /// <summary>
+    /// Data de nascimento do cliente
+    /// </summary>
     private String dob;
-
+    /// <summary>
+    /// CPF ou CNPJ do cliente
+    /// </summary>
     private String ssn;
-
+    /// <summary>
+    /// F = Feminino | M = Masculino
+    /// </summary>
     private String sex;
     private String creditCardNumber;
     private String expirationMonth;
@@ -32,8 +40,10 @@ public class CommandRequest {
     private String billingCountry;
     private String billingPhone;
     private String billingEmail;
-    private String orderId;
-
+    private String orderID;
+	/// <summary>
+    /// Token único associado ao cartão.
+    /// </summary>
     private String token;
     private String onFileEndDate;
     private String onFilePermissions;
@@ -202,11 +212,11 @@ public class CommandRequest {
 	public void setToken(String token) {
 		this.token = token;
 	}
-	public String getOrderId() {
-		return orderId;
+	public String getOrderID() {
+		return orderID;
 	}
-	public void setOrderId(String orderId) {
-		this.orderId = orderId;
+	public void setOrderID(String orderID) {
+		this.orderID = orderID;
 	}
 	public String getOnFileEndDate() {
 		return onFileEndDate;
