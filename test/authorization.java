@@ -2,7 +2,7 @@ import maxiPago.DataContract.ResponseBase;
 import maxiPago.DataContract.Transactional.TransactionResponse;
 import maxiPago.Gateway.Transaction;
 
-public class MaxiPagoExample {
+public class authorization {
 
   public static void main(String[] args) {
 
@@ -26,7 +26,7 @@ public class MaxiPagoExample {
         // Send 'null' if no installments are used //
         "N", // 'chargeInterest' - Optional: Charge interest flag (Y/N) for installment purchase ("com" e "sem" juros) //
         "1270.0.1", // 'ipAddress' - Optional //
-        null // 'customerIdExt' - Optional: Merchant internal customer number //
+        null, // 'customerIdExt' - Optional: Merchant internal customer number //
         "John Smith", // 'billingName' - RECOMMENDED: Customer name //
         "Rua de Teste, 123", // 'billingAddress' - Optional: Customer address //
         null, // 'billingAddress2' - Optional: Customer address //

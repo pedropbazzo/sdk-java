@@ -10,6 +10,8 @@ import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 import com.thoughtworks.xstream.XStream;
 import com.thoughtworks.xstream.io.xml.DomDriver;
+import com.thoughtworks.xstream.mapper.MapperWrapper;
+
 import maxiPago.DataContract.*;
 import maxiPago.DataContract.NonTransactional.ApiRequest;
 import maxiPago.DataContract.NonTransactional.ApiResponse;
@@ -24,13 +26,8 @@ import maxiPago.DataContract.Transactional.TransactionResponse;
 
 class Utils {
 	
-	/**
-	 * Faz o envio do request
-	 * Send the request
-	 * @param request
-	 * @param environment
-	 * @return
-	 * @throws Exception
+	/*
+	 * Envia o request
 	 */
     ResponseBase SendRequest(Object request, String environment) throws Exception {
 
@@ -40,7 +37,6 @@ class Utils {
 		String xml = ToXml(request);
 		
 		//Pega a URL de acordo com o que foi passado.
-		//take the url according by past
 		String url = GetUrl(request, environment);
 			
 		String responseContent = Post(xml, url);
@@ -48,13 +44,8 @@ class Utils {
 		return ParseResponse(responseContent);
 	}
     
-    /**
-     * Efetua o POST dos dados
-     * Make the POST of data
-     * @param xml
-     * @param url
-     * @return
-     * @throws IOException
+    /*
+     * 
      */
     private String Post(String xml, String url) throws IOException {
     	
@@ -129,12 +120,9 @@ class Utils {
     	
     }
     
-   /**
-    * Efetua o parse dos dados para String
-    * Make the parse of data to String
-    * @param request
-    * @return
-    */
+    /*
+     * 
+     */
 	private String ToXml(Object request) {
 
 		XStream xstream = new XStream(new DomDriver());
@@ -144,22 +132,14 @@ class Utils {
 		xstream.aliasField("return", Order.class, "_return");
 		xstream.alias("api-request", ApiRequest.class);
 		xstream.alias("rapi-request", RapiRequest.class);
-	
 		
 		String xml = xstream.toXML(request);
-
-		
 		
 		return xml;
 	}
 	
-	/**
-	 * Retorna a url de acordo com o ambiente
-	 * Return the environment request URL
-	 * @param request
-	 * @param environment
-	 * @return
-	 * @throws Exception
+	/*
+	 * 
 	 */
 	private String GetUrl(Object request, String environment) throws Exception {
 
@@ -169,11 +149,6 @@ class Utils {
 			type = 1;
 		else if("TEST".equals(environment))
 			type = 2;
-		else if("LOCAL".equals(environment))
-			type = 3;
-		else if("MAXIPAGO".equals(environment))
-			type = 4;
-		
 		
         switch (type) {
             case 1:
@@ -194,32 +169,67 @@ class Utils {
                 else if (request instanceof RapiRequest)
                     return "https://testapi.maxipago.net/ReportsAPI/servlet/ReportsAPI";
                 break;
-           
+            
         }
 
         throw new Exception("You must to inform the environment. (TEST or LIVE)");
     }
 	
 	
-	/**
-	 * Retorna a resposta e efetua o parse dos dados
-	 * Return the response and make the parse of returned data
-	 * @param responseContent
-	 * @return
-	 * @throws Exception
+	/*
+	 * 
 	 */
 	private ResponseBase ParseResponse(String responseContent) throws Exception {
 
 		if(responseContent == null)
 			return null;
 		
-		XStream xstream = new XStream(new DomDriver());
+		
+		XStream xstream = new XStream(new DomDriver()) {
+			   @Override
+			    protected MapperWrapper wrapMapper(MapperWrapper next) {
+			        return new MapperWrapper(next) {
+			            @Override
+			            public boolean shouldSerializeMember(Class definedIn, String fieldName) {
+			             if (definedIn == Object.class) {
+			               try {
+			                 return this.realClass(fieldName) != null;
+			               } catch(Exception e) {
+			                 return false;
+			               }
+			             } else {
+			                    return super.shouldSerializeMember(definedIn, fieldName);
+			                }
+			            }
+			         };
+			      }
+			   };
+		
+		TransactionResponse response = new TransactionResponse();
+		long transactionTimestampLong = 0;
+		long parseTransactionTimestamp = 0;
 		
         if (responseContent.contains("transaction-response")) {
         	
         	xstream.alias("transaction-response", TransactionResponse.class);
         	xstream.aliasField("save-on-file", TransactionResponse.class, "saveOnFile");
-			return (TransactionResponse) xstream.fromXML(responseContent);
+        	    	
+        	response = (TransactionResponse)xstream.fromXML(responseContent);
+        	
+        	String transactionTimestampStr = response.getTransactionTimestamp();
+        	
+        	//Hack to correct the TransactionTimestamp if multiplied by 1000
+        	if(transactionTimestampStr.length() > 10){
+        		
+        		transactionTimestampLong = new Long(transactionTimestampStr);
+        		parseTransactionTimestamp = transactionTimestampLong / 1000;
+        		response.setTransactionTimestamp(String.valueOf(parseTransactionTimestamp));
+	
+        	}
+        	
+        	
+			return response;
+			
 			
         }
         else if (responseContent.contains("rapi-response")) {
@@ -229,7 +239,6 @@ class Utils {
         	String correctResponse = null;
         	
         	//The code below inside "for" is necessary to hack the response error when the response came more than one field customerId in the same xml node.
-        	//O código abaixo dentro do "for" é necessário para reparar um erro quando o response retorna mais de um campo customerID no mesmo nó do xml.
         	for(int i = 0; i<teste.length; i ++) {
         		
         		if(i==0) {
@@ -246,6 +255,7 @@ class Utils {
         	}
         	
         	xstream.alias("rapi-response", RapiResponse.class);
+        	//xstream.addImplicitCollection(Records.class, "record");
         	xstream.addImplicitCollection(Records.class, "record", "record", Record.class);
 			return (RapiResponse) xstream.fromXML(correctResponse);
 			
