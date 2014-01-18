@@ -38,4 +38,24 @@ public class Payment {
 		this.currencyCode = currencyCode;
 	}
 	
+	private String softDescriptor;
+	
+	public String getSoftDescriptor() {
+		return softDescriptor;
+	}
+
+	public void setSoftDescriptor(String softDescriptor) {
+		this.softDescriptor = softDescriptor;
+	}
+	
+	private Double iataFee;
+	
+	public Double getIataFee() {
+		return iataFee;
+	}
+
+	public void setIataFee(Double iataFee) {
+		this.iataFee = iataFee;
+	}
+
 }

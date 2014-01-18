@@ -35,16 +35,19 @@ public class Transaction extends ServiceBase {
 	 * @param expYear @param cvvInd @param cvvNumber @param authentication
 	 * @param processorId @param numberOfInstallments @param chargeInterest
 	 * @param ipAddress  @param customerIdExt @param currencyCode @param fraudCheck
+	 * @param sofwareDescriptor @param iataFee
 	 * @return
 	 * @throws Exception
 	 */
 	public ResponseBase Sale(String merchantId, String merchantKey, String referenceNum, double chargeTotal, String creditCardNumber
 			, String expMonth, String expYear, String cvvInd, String cvvNumber, String authentication, String processorId
-			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode, String fraudCheck) throws Exception {
+			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode
+			, String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
 		
 		this.FillRequestBase("sale", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor
+				, iataFee);
 		
 		return new Utils().SendRequest(this.request, this.getEnvironment());
 		
@@ -72,11 +75,14 @@ public class Transaction extends ServiceBase {
 	 * @param customerIdExt
 	 * @param currencyCode
 	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
 	 * @throws Exception
 	 */
 	private void FillRequestBase(String operation, String merchantId, String merchantKey, String referenceNum, double chargeTotal, String creditCardNumber
 			, String expMonth, String expYear, String cvvInd, String cvvNumber, String authentication, String processorId
-			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode, String fraudCheck) throws Exception {
+			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode
+			, String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
 		
 			this.request = new TransactionRequest(merchantId, merchantKey);
 			
@@ -102,6 +108,12 @@ public class Transaction extends ServiceBase {
 			
 			if(currencyCode != null && currencyCode.length() > 0)
 				payment.setCurrencyCode(currencyCode);
+			
+	        if(softDescriptor != null && softDescriptor.length() > 0)
+	        	payment.setSoftDescriptor(softDescriptor);
+	        
+	        if(iataFee != null && iataFee != 0)
+	        	payment.setIataFee(iataFee);
 			
 			if(numberOfInstallments == null || numberOfInstallments.length() == 0)
 				numberOfInstallments = "0";
@@ -168,6 +180,8 @@ public class Transaction extends ServiceBase {
 	 * @param shippingEmail
 	 * @param currencyCode
 	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
 	 * @return
 	 * @throws Exception
 	 */
@@ -178,11 +192,12 @@ public class Transaction extends ServiceBase {
 			, String billingAddress2, String billingCity, String billingState, String billingPostalCode
 			, String billingCountry, String billingPhone, String billingEmail, String shippingName, String shippingAddress
 			, String shippingAddress2, String shippingCity, String shippingState, String shippingPostalCode
-			, String shippingCountry, String shippingPhone, String shippingEmail, String currencyCode, String fraudCheck) throws Exception {
+			, String shippingCountry, String shippingPhone, String shippingEmail, String currencyCode, String fraudCheck
+			, String softDescriptor, Double iataFee) throws Exception {
 		
 		this.FillRequestBase("sale", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee);
 		
 		RequestBase sale = this.request.getOrder().getSale();
 		
@@ -230,15 +245,19 @@ public class Transaction extends ServiceBase {
 	 * @param chargeInterest
 	 * @param ipAddress
 	 * @param currencyCode
+	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
 	 * @return
 	 * @throws Exception
 	 */
     public ResponseBase Sale(String merchantId, String merchantKey, String referenceNum, double chargeTotal, String processorId
                             , String token, String customerId, String numberOfInstallments, String chargeInterest
-                            , String ipAddress, String currencyCode, String fraudCheck) throws Exception {
+                            , String ipAddress, String currencyCode, String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
         
         return this.PayWithToken("sale", merchantId, merchantKey, referenceNum, chargeTotal, processorId, token, customerId
-                                , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck);
+                                , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck, softDescriptor
+                                , iataFee);
         
     }
     
@@ -274,6 +293,9 @@ public class Transaction extends ServiceBase {
      * @param billingPhone
      * @param billingEmail
      * @param currencyCode
+     * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
      * @return
      * @throws Exception
      */
@@ -283,13 +305,14 @@ public class Transaction extends ServiceBase {
                                , String customerToken, String onFileEndDate, String onFilePermission, String onFileComment
                                , String onFileMaxChargeAmount, String billingName, String billingAddress, String billingAddress2
                                , String billingCity, String billingState, String billingPostalCode, String billingCountry
-                               , String billingPhone, String billingEmail, String currencyCode, String fraudCheck) throws Exception {
+                               , String billingPhone, String billingEmail, String currencyCode, String fraudCheck
+                               , String softDescriptor, Double iataFee) throws Exception {
 
         return PaySavingCreditCardAutomatically("sale", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth, expYear
                                                 , cvvInd, cvvNumber, processorId, numberOfInstallments, chargeInterest, ipAddress, customerToken
                                                 , onFileEndDate, onFilePermission, onFileComment, onFileMaxChargeAmount, billingName, billingAddress
                                                 , billingAddress2, billingCity, billingState, billingPostalCode, billingCountry, billingPhone, billingEmail
-                                                , currencyCode, fraudCheck);
+                                                , currencyCode, fraudCheck, softDescriptor, iataFee);
 
     }
 	
@@ -312,17 +335,20 @@ public class Transaction extends ServiceBase {
      * @param customerIdExt
      * @param CurrencyCode
      * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
      * @return
      * @throws Exception
      */
 	public ResponseBase Auth(String merchantId, String merchantKey, String referenceNum
 			, double chargeTotal, String creditCardNumber, String expMonth, String expYear, String cvvInd
 			, String cvvNumber, String authentication, String processorId, String numberOfInstallments
-			, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode, String fraudCheck) throws Exception {
+			, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode, String fraudCheck
+			, String softDescriptor, Double iataFee) throws Exception {
 		
 		this.FillRequestBase("auth", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee);
 		
 		return new Utils().SendRequest(this.request, this.getEnvironment());
 		
@@ -366,6 +392,8 @@ public class Transaction extends ServiceBase {
 	 * @param shippingEmail
 	 * @param currencyCode
 	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
 	 * @return
 	 * @throws Exception
 	 */
@@ -376,11 +404,13 @@ public class Transaction extends ServiceBase {
 			, String billingCity, String billingState, String billingPostalCode, String billingCountry
 			, String billingPhone, String billingEmail, String shippingName, String shippingAddress
 			, String shippingAddress2, String shippingCity, String shippingState, String shippingPostalCode
-			, String shippingCountry, String shippingPhone, String shippingEmail, String currencyCode, String fraudCheck) throws Exception {
+			, String shippingCountry, String shippingPhone, String shippingEmail, String currencyCode, String fraudCheck
+			, String softDescriptor, Double iataFee) throws Exception {
 			
 		this.FillRequestBase("auth", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor
+				, iataFee);
 		
 		RequestBase auth = this.request.getOrder().getAuth();
 		
@@ -431,16 +461,19 @@ public class Transaction extends ServiceBase {
 	 * @param ipAddress
 	 * @param currencyCode
 	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
 	 * @return
 	 * @throws Exception
 	 */
     public ResponseBase Auth(String merchantId, String merchantKey, String referenceNum, double chargeTotal, String processorId
                             , String token, String customerId, String numberOfInstallments, String chargeInterest
-                            , String ipAddress, String currencyCode, String fraudCheck) throws Exception {
+                            , String ipAddress, String currencyCode, String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
 
 
         return this.PayWithToken("auth", merchantId, merchantKey, referenceNum, chargeTotal, processorId, token, customerId
-                                , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck);
+                                , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck, softDescriptor
+                                , iataFee);
 
     }
     
@@ -476,7 +509,9 @@ public class Transaction extends ServiceBase {
      * @param billingPhone
      * @param billingEmail
      * @param currencyCode
-     * @param fraudCheck
+	 * @param fraudCheck
+	 * @param sofwareDescriptor
+	 * @param iataFee
      * @return
      * @throws Exception
      */
@@ -486,13 +521,14 @@ public class Transaction extends ServiceBase {
                                , String customerToken, String onFileEndDate, String onFilePermission, String onFileComment
                                , String onFileMaxChargeAmount, String billingName, String billingAddress, String billingAddress2
                                , String billingCity, String billingState, String billingPostalCode, String billingCountry
-                               , String billingPhone, String billingEmail, String currencyCode, String fraudCheck) throws Exception {
+                               , String billingPhone, String billingEmail, String currencyCode, String fraudCheck
+                               , String softDescriptor, Double iataFee) throws Exception {
 
         return PaySavingCreditCardAutomatically("auth", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth, expYear
                                                 , cvvInd, cvvNumber, processorId, numberOfInstallments, chargeInterest, ipAddress, customerToken
                                                 , onFileEndDate, onFilePermission, onFileComment, onFileMaxChargeAmount, billingName, billingAddress
                                                 , billingAddress2, billingCity, billingState, billingPostalCode, billingCountry, billingPhone, billingEmail
-                                                , currencyCode, fraudCheck);
+                                                , currencyCode, fraudCheck, softDescriptor, iataFee);
 
     }
     
@@ -587,7 +623,8 @@ public class Transaction extends ServiceBase {
      * @throws Exception
      */
     private ResponseBase PayWithToken(String operation, String merchantId, String merchantKey, String referenceNum, double chargeTotal, String processorId
-                            , String token, String customerId, String numberOfInstallments, String chargeInterest, String ipAddress, String currencyCode, String fraudCheck) throws Exception {
+                            , String token, String customerId, String numberOfInstallments, String chargeInterest, String ipAddress, String currencyCode
+                            , String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
 
         this.request = new TransactionRequest(merchantId, merchantKey);
 
@@ -612,6 +649,12 @@ public class Transaction extends ServiceBase {
         
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
+        
+        if(softDescriptor != null && softDescriptor.length() > 0)
+        	payment.setSoftDescriptor(softDescriptor);
+        
+        if(iataFee != null && iataFee != 0)
+        	payment.setIataFee(iataFee);
 
         if(numberOfInstallments == null || numberOfInstallments.length() == 0)
 			numberOfInstallments = "0";
@@ -679,7 +722,8 @@ public class Transaction extends ServiceBase {
                                                         , String customerToken, String onFileEndDate, String onFilePermission, String onFileComment
                                                         , String onFileMaxChargeAmount, String billingName, String billingAddress, String billingAddress2
                                                         , String billingCity, String billingState, String billingPostalCode, String billingCountry
-                                                        , String billingPhone, String billingEmail, String currencyCode, String fraudCheck) throws Exception {
+                                                        , String billingPhone, String billingEmail, String currencyCode, String fraudCheck
+                                                        , String softDescriptor, Double iataFee) throws Exception {
 
         this.request = new TransactionRequest(merchantId, merchantKey);
 
@@ -717,6 +761,12 @@ public class Transaction extends ServiceBase {
         
         if(currencyCode != null && currencyCode.length() > 0)
         	payment.setCurrencyCode(currencyCode);
+        
+        if(softDescriptor != null && softDescriptor.length() > 0)
+        	payment.setSoftDescriptor(softDescriptor);
+        
+        if(iataFee != null && iataFee != 0)
+        	payment.setIataFee(iataFee);
 
         if(numberOfInstallments == null || numberOfInstallments.length() == 0)
 			numberOfInstallments = "0";

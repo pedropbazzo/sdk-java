@@ -8,7 +8,6 @@ public class Record {
 	String userId;
 	String bankRoutingNumber;
 	String achAccountNumber;
-	private String customerId1;
 	
 	/*
 	 * Código de autorização da Adquirente
@@ -313,7 +312,7 @@ public class Record {
     private String customField4;
     private String customField5;
     private String boletoUrl;
-    private String numberOfInstallment;
+    private String numberOfInstallments;
     private String chargeInterest;
 
 	public String getCustomField1() {
@@ -340,16 +339,12 @@ public class Record {
 		return boletoUrl;
 	}
 
-	public String getNumberOfInstallment() {
-		return numberOfInstallment;
+	public String getNumberOfInstallments() {
+		return numberOfInstallments;
 	}
 
 	public String getChargeInterest() {
 		return chargeInterest;
 	}
-	
-	
-	
-	
 	
 }
