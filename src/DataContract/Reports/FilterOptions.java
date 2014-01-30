@@ -15,6 +15,7 @@ public class FilterOptions {
     private String endRecordNumber;
     private String pageNumber;
     private String pageToken;
+    private String orderId;
 	
     public String getTransactionId() {
 		return transactionId;
@@ -93,6 +94,12 @@ public class FilterOptions {
 	}
 	public void setPageToken(String pageToken) {
 		this.pageToken = pageToken;
+	}
+	public String getOrderId() {
+		return orderId;
+	}
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
 	}
     
     

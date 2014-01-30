@@ -54,6 +54,21 @@ public class Report extends ServiceBase {
         
     }
 
+	/*
+     * Queries one or more transactions
+     */
+    public RapiResponse GetTransactionDetailReportByOrderId(String merchantId, String merchantKey, String orderId) throws Exception {
+
+        this.request = new RapiRequest(merchantId, merchantKey);
+        this.request.setCommand("transactionDetailReport");
+
+        FilterOptions filter = this.request.getRequest().getFilterOptions();
+        filter.setOrderId(orderId);
+
+        return (RapiResponse) new Utils().SendRequest(this.request, this.getEnvironment());
+        
+    }
+    
     /*
      * Flips pages on previous query
      */
