@@ -130,6 +130,16 @@ public class RequestBase {
 		this.saveOnFile = saveOnFile;
 	}
 	
+	private ItemList itemList;
+
+	public ItemList getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(ItemList itemList) {
+		this.itemList = itemList;
+	}
+	
 	
 
 }

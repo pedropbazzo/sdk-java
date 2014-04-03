@@ -5,6 +5,8 @@ import maxiPago.DataContract.Transactional.Billing;
 import maxiPago.DataContract.Transactional.CaptureOrReturn;
 import maxiPago.DataContract.Transactional.CreditCard;
 import maxiPago.DataContract.Transactional.CreditInstallment;
+import maxiPago.DataContract.Transactional.EWallet;
+import maxiPago.DataContract.Transactional.ItemList;
 import maxiPago.DataContract.Transactional.OnFile;
 import maxiPago.DataContract.Transactional.Order;
 import maxiPago.DataContract.Transactional.PayType;
@@ -47,7 +49,7 @@ public class Transaction extends ServiceBase {
 		this.FillRequestBase("sale", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
 				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor
-				, iataFee);
+				, iataFee, null);
 		
 		return new Utils().SendRequest(this.request, this.getEnvironment());
 		
@@ -82,7 +84,7 @@ public class Transaction extends ServiceBase {
 	private void FillRequestBase(String operation, String merchantId, String merchantKey, String referenceNum, double chargeTotal, String creditCardNumber
 			, String expMonth, String expYear, String cvvInd, String cvvNumber, String authentication, String processorId
 			, String numberOfInstallments, String chargeInterest, String ipAddress, String customerIdExt, String currencyCode
-			, String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
+			, String fraudCheck, String softDescriptor, Double iataFee, ItemList items) throws Exception {
 		
 			this.request = new TransactionRequest(merchantId, merchantKey);
 			
@@ -127,6 +129,10 @@ public class Transaction extends ServiceBase {
 				payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
 				payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
 				
+			}
+			
+			if(items != null){
+				rBase.setItemList(items);
 			}
 			
 			TransactionDetail detail = rBase.getTransactionDetail();
@@ -197,7 +203,7 @@ public class Transaction extends ServiceBase {
 		
 		this.FillRequestBase("sale", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee, null);
 		
 		RequestBase sale = this.request.getOrder().getSale();
 		
@@ -257,7 +263,7 @@ public class Transaction extends ServiceBase {
         
         return this.PayWithToken("sale", merchantId, merchantKey, referenceNum, chargeTotal, processorId, token, customerId
                                 , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck, softDescriptor
-                                , iataFee);
+                                , iataFee, null);
         
     }
     
@@ -312,7 +318,7 @@ public class Transaction extends ServiceBase {
                                                 , cvvInd, cvvNumber, processorId, numberOfInstallments, chargeInterest, ipAddress, customerToken
                                                 , onFileEndDate, onFilePermission, onFileComment, onFileMaxChargeAmount, billingName, billingAddress
                                                 , billingAddress2, billingCity, billingState, billingPostalCode, billingCountry, billingPhone, billingEmail
-                                                , currencyCode, fraudCheck, softDescriptor, iataFee);
+                                                , currencyCode, fraudCheck, softDescriptor, iataFee, null);
 
     }
 	
@@ -348,7 +354,7 @@ public class Transaction extends ServiceBase {
 		
 		this.FillRequestBase("auth", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
-				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee);
+				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor, iataFee, null);
 		
 		return new Utils().SendRequest(this.request, this.getEnvironment());
 		
@@ -410,7 +416,7 @@ public class Transaction extends ServiceBase {
 		this.FillRequestBase("auth", merchantId, merchantKey, referenceNum, chargeTotal, creditCardNumber, expMonth
 				, expYear, cvvInd, cvvNumber, authentication, processorId, numberOfInstallments
 				, chargeInterest, ipAddress, customerIdExt, currencyCode, fraudCheck, softDescriptor
-				, iataFee);
+				, iataFee, null);
 		
 		RequestBase auth = this.request.getOrder().getAuth();
 		
@@ -473,7 +479,7 @@ public class Transaction extends ServiceBase {
 
         return this.PayWithToken("auth", merchantId, merchantKey, referenceNum, chargeTotal, processorId, token, customerId
                                 , numberOfInstallments, chargeInterest, ipAddress, currencyCode, fraudCheck, softDescriptor
-                                , iataFee);
+                                , iataFee, null);
 
     }
     
@@ -528,7 +534,7 @@ public class Transaction extends ServiceBase {
                                                 , cvvInd, cvvNumber, processorId, numberOfInstallments, chargeInterest, ipAddress, customerToken
                                                 , onFileEndDate, onFilePermission, onFileComment, onFileMaxChargeAmount, billingName, billingAddress
                                                 , billingAddress2, billingCity, billingState, billingPostalCode, billingCountry, billingPhone, billingEmail
-                                                , currencyCode, fraudCheck, softDescriptor, iataFee);
+                                                , currencyCode, fraudCheck, softDescriptor, iataFee, null);
 
     }
     
@@ -624,7 +630,7 @@ public class Transaction extends ServiceBase {
      */
     private ResponseBase PayWithToken(String operation, String merchantId, String merchantKey, String referenceNum, double chargeTotal, String processorId
                             , String token, String customerId, String numberOfInstallments, String chargeInterest, String ipAddress, String currencyCode
-                            , String fraudCheck, String softDescriptor, Double iataFee) throws Exception {
+                            , String fraudCheck, String softDescriptor, Double iataFee, ItemList items) throws Exception {
 
         this.request = new TransactionRequest(merchantId, merchantKey);
 
@@ -670,6 +676,10 @@ public class Transaction extends ServiceBase {
 			
 		}
 
+		if(items != null){
+			rBase.setItemList(items);
+		}
+		
         TransactionDetail detail = rBase.getTransactionDetail();
         PayType payType = detail.getPayType();
 
@@ -723,7 +733,7 @@ public class Transaction extends ServiceBase {
                                                         , String onFileMaxChargeAmount, String billingName, String billingAddress, String billingAddress2
                                                         , String billingCity, String billingState, String billingPostalCode, String billingCountry
                                                         , String billingPhone, String billingEmail, String currencyCode, String fraudCheck
-                                                        , String softDescriptor, Double iataFee) throws Exception {
+                                                        , String softDescriptor, Double iataFee, ItemList items) throws Exception {
 
         this.request = new TransactionRequest(merchantId, merchantKey);
 
@@ -782,6 +792,10 @@ public class Transaction extends ServiceBase {
 			
 		}
 
+		if(items != null){
+			rBase.setItemList(items);
+		}
+		
         TransactionDetail detail = rBase.getTransactionDetail();
         PayType payType = detail.getPayType();
 
@@ -1154,7 +1168,143 @@ public class Transaction extends ServiceBase {
         return new Utils().SendRequest(this.request, this.getEnvironment());
 	}
 	
+	/**
+	 * Metodo MasterPass passo 1
+	 * Faz a autenticação de uma transação na MasterPass.
+	 * @param merchantId
+	 * @param merchantKey
+	 * @param referenceNum
+	 * @param chargeTotal
+	 * @param processorId
+	 * @param parametersUrl
+	 * @param supressShipping
+	 * @param acceptedCards
+	 * @param ipAddress
+	 * @param customerIdExt
+	 * @param billingName
+     * @param billingAddress
+     * @param billingAddress2
+     * @param billingCity
+     * @param billingState
+     * @param billingPostalCode
+     * @param billingCountry
+     * @param billingPhone
+     * @param billingEmail
+     * @param items
+	 * @return
+	 * @throws Exception
+	 */
+	public ResponseBase MasterPassStep1(String merchantId, String merchantKey, String referenceNum, double chargeTotal
+			, String processorId, String parametersUrl, String supressShipping, String acceptedCards, String ipAddress
+			, String customerIdExt, ItemList items) throws Exception {
+		
+		this.request = new TransactionRequest(merchantId, merchantKey);
+
+        Order order = this.request.getOrder();
+        RequestBase sale = new RequestBase();
+        order.setSale(sale);
+        sale.setReferenceNum(referenceNum);
+        sale.setProcessorID(processorId);
+        sale.setIpAddress(ipAddress);
+        sale.setCustomerIdExt(customerIdExt);
+
+        Payment payment = new Payment();
+        sale.setPayment(payment);
+        payment.setChargeTotal(chargeTotal);
+
+        if(items != null){
+			sale.setItemList(items);
+		}
+        
+        TransactionDetail detail = sale.getTransactionDetail();
+        PayType payType = detail.getPayType();
+
+        EWallet ewallet = new EWallet();
+        payType.setEWallet(ewallet);
+        
+        if(parametersUrl == null)
+        	parametersUrl = "";
+        
+        ewallet.setParametersUrl(parametersUrl);
+        ewallet.setAcceptedCards(acceptedCards);
+        ewallet.setSupressShipping(supressShipping);
+        
+        return new Utils().SendRequest(this.request, this.getEnvironment());
+	}
 	
+	/**
+	 * Metodo MasterPass passo 2
+	 * Faz a autorização na operadora de uma transação que foi autenticada pela MasterPass.
+	 * @param merchantId
+	 * @param merchantKey
+	 * @param referenceNum
+	 * @param chargeTotal
+	 * @param processorId
+	 * @param numberOfInstallments
+	 * @param chargeInterest
+	 * @param transactionID
+	 * @param acquirerID
+	 * @param ipAddress
+	 * @param customerIdExt
+	 * @param currencyCode
+	 * @param fraudCheck
+	 * @param softDescriptor
+	 * @return
+	 * @throws Exception
+	 */
+	public ResponseBase MasterPassStep2(String merchantId, String merchantKey, String referenceNum, double chargeTotal
+			, String processorId, String numberOfInstallments, String chargeInterest, String transactionID
+			, String acquirerID, String ipAddress, String customerIdExt, String currencyCode, String fraudCheck
+            , String softDescriptor) throws Exception {
+		
+		this.request = new TransactionRequest(merchantId, merchantKey);
+
+        Order order = this.request.getOrder();
+        RequestBase sale = new RequestBase();
+        order.setSale(sale);
+        sale.setReferenceNum(referenceNum);
+        sale.setProcessorID(processorId);
+        sale.setIpAddress(ipAddress);
+        sale.setCustomerIdExt(customerIdExt);
+        
+        if(fraudCheck != null && fraudCheck.length() > 0)
+        	sale.setFraudCheck(fraudCheck);
+
+        Payment payment = new Payment();
+        sale.setPayment(payment);
+        payment.setChargeTotal(chargeTotal);
+        
+        if(currencyCode != null && currencyCode.length() > 0)
+			payment.setCurrencyCode(currencyCode);
+		
+        if(softDescriptor != null && softDescriptor.length() > 0)
+        	payment.setSoftDescriptor(softDescriptor);
+		
+		if(numberOfInstallments == null || numberOfInstallments.length() == 0)
+			numberOfInstallments = "0";
+		
+		int tranInstallments = Integer.parseInt(numberOfInstallments);
+		
+		//Verifica se vai precisar criar o nÃ³ de parcelas e juros.
+		if ((chargeInterest != null && chargeInterest.length() > 0) && tranInstallments > 1 ) {
+			
+			payment.setCreditInstallment(new CreditInstallment());
+			payment.getCreditInstallment().setChargeInterest(chargeInterest.toUpperCase());
+			payment.getCreditInstallment().setNumberOfInstallments(String.valueOf(tranInstallments));
+			
+		}
+        
+        TransactionDetail detail = sale.getTransactionDetail();
+        PayType payType = detail.getPayType();
+
+        EWallet ewallet = new EWallet();
+        payType.setEWallet(ewallet);
+        
+        ewallet.setTransactionID(transactionID);
+        ewallet.setAcquirerID(acquirerID);
+        
+        return new Utils().SendRequest(this.request, this.getEnvironment());
+	}
 	
 	
 }

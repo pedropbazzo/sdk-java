@@ -9,6 +9,7 @@ import java.net.HttpURLConnection;
 import java.net.URL;
 import javax.net.ssl.HttpsURLConnection;
 import com.thoughtworks.xstream.XStream;
+import com.thoughtworks.xstream.annotations.Annotations;
 import com.thoughtworks.xstream.io.xml.DomDriver;
 import com.thoughtworks.xstream.mapper.MapperWrapper;
 
@@ -20,6 +21,8 @@ import maxiPago.DataContract.Reports.RapiResponse;
 import maxiPago.DataContract.Reports.Record;
 import maxiPago.DataContract.Reports.Records;
 import maxiPago.DataContract.Transactional.ErrorResponse;
+import maxiPago.DataContract.Transactional.Item;
+import maxiPago.DataContract.Transactional.ItemList;
 import maxiPago.DataContract.Transactional.Order;
 import maxiPago.DataContract.Transactional.TransactionRequest;
 import maxiPago.DataContract.Transactional.TransactionResponse;
@@ -126,11 +129,15 @@ class Utils {
 	private String ToXml(Object request) {
 
 		XStream xstream = new XStream(new DomDriver());
-
+        
+		xstream.autodetectAnnotations(true);
+		
+		
 		xstream.alias("transaction-request", TransactionRequest.class);
 		xstream.aliasField("void", Order.class, "_void");
 		xstream.aliasField("return", Order.class, "_return");
 		xstream.alias("api-request", ApiRequest.class);
+		xstream.alias("item", Item.class);
 		xstream.alias("rapi-request", RapiRequest.class);
 		
 		String xml = xstream.toXML(request);

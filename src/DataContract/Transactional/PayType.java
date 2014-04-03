@@ -10,6 +10,7 @@ public class PayType {
 	private OnFile onFile;
 	private Boleto boleto;
 	private OnlineDebit onlineDebit;
+	private EWallet eWallet;
 
 	public CreditCard getCreditCard() {
 		return this.creditCard;
@@ -41,6 +42,14 @@ public class PayType {
 	 
 	public void setOnlineDebit(OnlineDebit onlineDebit) { 
 		this.onlineDebit = onlineDebit; 
+	}
+
+	public EWallet getEWallet() {
+		return eWallet;
+	}
+
+	public void setEWallet(EWallet eWallet) {
+		this.eWallet = eWallet;
 	}
 	
 
