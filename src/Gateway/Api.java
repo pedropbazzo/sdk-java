@@ -162,7 +162,43 @@ public class Api extends ServiceBase {
 		return (ApiResponse)new Utils().SendRequest(this.request, this.getEnvironment());
 		
 	}
-    
-    
+
+    /*
+     * Atualiza dados do cartao com o token
+     */
+    public ApiResponse TokenUpdateCreditAccountInfo(String merchantId, String merchantKey, String token, String customerIdExt,
+                                                    String creditCardNumber, String expirationMonth, String expirationYear,
+                                                    String billingName, String billingAddress1, String billingAddress2,
+                                                    String billingCity, String billingState, String billingZip, String billingCountry,
+                                                    String billingPhone, String billingEmail, String onFileEndDate, String onFilePermission,
+                                                    String onFileComment, String onFileMaxChargeAmount) throws Exception{
+
+        this.request = new ApiRequest(merchantId, merchantKey);
+
+        this.request.setCommand("token-update-credit-account-info");
+        CommandRequest commandRequest = new CommandRequest();
+        this.request.setRequest(commandRequest);
+
+        commandRequest.setToken(token);
+        commandRequest.setCustomerIdExt(customerIdExt);
+        commandRequest.setCreditCardNumber(creditCardNumber);
+        commandRequest.setExpirationMonth(expirationMonth);
+        commandRequest.setExpirationYear(expirationYear);
+        commandRequest.setBillingName(billingName);
+        commandRequest.setBillingAddress1(billingAddress1);
+        commandRequest.setBillingAddress2(billingAddress2);
+        commandRequest.setBillingCity(billingCity);
+        commandRequest.setBillingState(billingState);
+        commandRequest.setBillingZip(billingZip);
+        commandRequest.setBillingCountry(billingCountry);
+        commandRequest.setBillingPhone(billingPhone);
+        commandRequest.setBillingEmail(billingEmail);
+        commandRequest.setOnFileEndDate(onFileEndDate);
+        commandRequest.setOnFilePermission(onFilePermission);
+        commandRequest.setOnFileComment(onFileComment);
+        commandRequest.setOnFileMaxChargeAmount(onFileMaxChargeAmount);
+
+        return (ApiResponse)new Utils().SendRequest(this.request, this.getEnvironment());
+    }
 	
 }
