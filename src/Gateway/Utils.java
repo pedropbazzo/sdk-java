@@ -132,7 +132,6 @@ class Utils {
         
 		xstream.autodetectAnnotations(true);
 		
-		
 		xstream.alias("transaction-request", TransactionRequest.class);
 		xstream.aliasField("void", Order.class, "_void");
 		xstream.aliasField("return", Order.class, "_return");
