@@ -162,7 +162,7 @@ public class AuthWithFraud {
 					"SP", // ESTADO_CLIENTE
 					"Centro", //District
 					"07151-385", // CEP_CLIENTE
-					"Brasil", // PAIS_CLIENTE
+					"BR", // PAIS_CLIENTE
 					"(11) 96478-0733", // TELEFONE_CLIENTE
 					"leonardo.nascimento@maxipago.com", // EMAIL_CLIENTE
 					"Individual",
@@ -177,7 +177,7 @@ public class AuthWithFraud {
 					"SP", // ESTADO_CLIENTE
 					"Centro", //District
 					", 07151-385", // CEP_CLIENTE
-					"Brasil", // PAIS_CLIENTE
+					"BR", // PAIS_CLIENTE
 					"(11) 96478-0735", // TELEFONE_CLIENTE					
 					"leonardo.nascimento@maxipago.com", // EMAIL_CLIENTE
 					"Individual",
