@@ -9,7 +9,7 @@ public class Capture {
 		
 		try{
 			transaction.Capture("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"0A0104A3:015C68E21C58:69C3:553EABB1", //ID_PEDIDO
 					"Order-001", //NUMERO_REFERENCIA
 					2.00d //VALOR_CAPTURA

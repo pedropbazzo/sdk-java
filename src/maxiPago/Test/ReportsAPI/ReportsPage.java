@@ -7,8 +7,8 @@ public class ReportsPage {
 		Report report = new Report();
 		
 		try {
-			report.GetTransactionDetailReport("23859", //ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", //CHAVE_LOJA
+			report.GetTransactionDetailReport("100", //ID_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"temp1488833129891.1", //TOKEN DA PAGINA
 					"1" //NUMERO DA PAGINA
 					);

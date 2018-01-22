@@ -9,9 +9,9 @@ public class DeleteCardOnFile {
 		
 		try{
 			api.DeleteCardOnFile("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
-					"66111", //ID_CLIENTE
-					"KA+ko6ORUjY=" //CARTAO_CLIENTE
+					"merchant_key", //CHAVE_LOJA
+					"11111", //ID_CLIENTE
+					"Token==" //CARTAO_CLIENTE
 					);			
 		}catch(Exception e){
 			e.printStackTrace();

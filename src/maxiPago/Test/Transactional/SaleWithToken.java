@@ -9,11 +9,11 @@ public class SaleWithToken {
 		
 		try{
 			transaction.Sale("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_id", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					400.00d, //VALOR
 					"1", //PROCESSOR_ID
-					"kwvYc/Zhgw0=", //TOKEN_CARTAO
+					"token==", //TOKEN_CARTAO
 					"66328", //ID_CLIENTE
 					"1", //NUMERO_PARCELAS
 					"N", //COM_SEM_JUROS *Y = SIM N = NAO

@@ -9,14 +9,14 @@ public class OnlineDebit {
 		Transaction transaction = new Transaction();
 		
 		try {
-			transaction.OnlineDebit("23859", //ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", //CHAVE_LOJA
+			transaction.OnlineDebit("100", //ID_LOJA
+					"merchant_id", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					5.00d, //VALOR
 					"1", //PROCESSOR_ID
 					"responseCode=0&responseCode=1",
 					"127.0.0.1", //ENDERECO_IP
-					"393.009.378-20" //CPF_CLIENTE
+					"123.456.789-12" //CPF_CLIENTE
 					);
 			
 		} catch (Exception e) {

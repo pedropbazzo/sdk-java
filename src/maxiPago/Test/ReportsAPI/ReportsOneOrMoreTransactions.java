@@ -9,8 +9,8 @@ public class ReportsOneOrMoreTransactions {
 		Report report = new Report();
 		
 		try {
-			report.GetTransactionDetailReportByOrderId("23859", //ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", //CHAVE_LOJA
+			report.GetTransactionDetailReportByOrderId("100", //ID_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"0A01159A:015CC0C7F732:1693:31DC1A43" //ID_PEDIDO
 					);
 		} catch (Exception e) {

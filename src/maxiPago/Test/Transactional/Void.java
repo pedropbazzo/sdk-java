@@ -10,7 +10,7 @@ public class Void {
 		
 		try{
 			transaction.Void("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_id", //CHAVE_LOJA
 					"1628312", //ID_TRANSACAO
 					"127.0.0.1" //ENDERECO_IP
 					);

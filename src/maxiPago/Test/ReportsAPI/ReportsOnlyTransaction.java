@@ -9,8 +9,8 @@ public class ReportsOnlyTransaction {
 		Report report = new Report();
 		
 		try {
-			report.GetTransactionDetailReport("23859", //ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", //CHAVE_LOJA
+			report.GetTransactionDetailReport("100", //ID_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"181706654" //ID_PEDIDO
 					);
 			

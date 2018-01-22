@@ -9,7 +9,7 @@ public class CompleteAuth {
 		
 		try{
 			transaction.Auth("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					5.00d, //VALOR
 					"4111111111111111", //NUMERO_CARTAO
@@ -20,7 +20,7 @@ public class CompleteAuth {
 					"0", //NUMERO_PARCELAS
 					"N", //COM_SEM_JUROS *Y = SIM N = NAO
 					"127.0.0.1", //ENDERECO_IP
-					"393.009.378-20", //CPF_CLIENTE
+					"123.456.789-12", //CPF_CLIENTE
 					
 					//BILLING
 					

@@ -46,11 +46,11 @@ public class AuthWithFraud {
 
 		customerDocument billingDocument = new customerDocument();
 		billingDocument.setDocumentType("RG");
-		billingDocument.setDocumentValue("50.723.858-8");
+		billingDocument.setDocumentValue("12.345.678-9");
 
 		customerDocument billingDocument02 = new customerDocument();
 		billingDocument02.setDocumentType("CPF");
-		billingDocument02.setDocumentValue("393.009.378-20");
+		billingDocument02.setDocumentValue("123.456.789-12");
 
 		List<customerDocument> documents = new ArrayList<customerDocument>();
 		documents.add(billingDocument);
@@ -89,12 +89,12 @@ public class AuthWithFraud {
 		customerDocument shippingDocument = new customerDocument();
 		
 		shippingDocument.setDocumentType("RG");
-		shippingDocument.setDocumentValue("50.723.858-8");
+		shippingDocument.setDocumentValue("12.345.678-9");
 
 		customerDocument shippingDocument02 = new customerDocument();
 		
 		shippingDocument02.setDocumentType("CPF");
-		shippingDocument02.setDocumentValue("393.009.378-20");
+		shippingDocument02.setDocumentValue("123.456.789-12");
 
 		List<customerDocument> documents2 = new ArrayList<customerDocument>();
 		documents2.add(shippingDocument);
@@ -139,8 +139,8 @@ public class AuthWithFraud {
 
 		Transaction transaction = new Transaction();
 		try {
-			transaction.Auth("23859", // ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", // CHAVE_LOJA
+			transaction.Auth("100", // ID_LOJA
+					"merchant_key", // CHAVE_LOJA
 					"Order-001", // NUMERO_REFERENCIA
 					160.04d, // VALOR
 					"4000000000000002", // NUMERO_CARTAO
@@ -151,35 +151,35 @@ public class AuthWithFraud {
 					"0", // NUMERO_PARCELAS
 					"N", // COM_SEM_JUROS *Y = SIM N = NAO
 					"127.0.0.1", // ENDERECO_IP
-					"393.009.378-20", // CPF_CLIENTE
+					"123.456.789-20", // CPF_CLIENTE
 
 					// BILLING
 					234, //ID
-					"Leonardo", // NOME_CLIENTE
-					"Rua Pedro Luiz", // ENDERECO_CLIENTE
+					"Fulano", // NOME_CLIENTE
+					"Rua da republica", // ENDERECO_CLIENTE
 					"Casa", // ENDERE�O2_CLIENTE
 					"Guarulhos", // CIDADE_CLIENTE
 					"SP", // ESTADO_CLIENTE
 					"Centro", //District
-					"07151-385", // CEP_CLIENTE
+					"07000-000", // CEP_CLIENTE
 					"BR", // PAIS_CLIENTE
-					"(11) 96478-0733", // TELEFONE_CLIENTE
-					"leonardo.nascimento@maxipago.com", // EMAIL_CLIENTE
+					"(11) 99999-9999", // TELEFONE_CLIENTE
+					"email@email.com", // EMAIL_CLIENTE
 					"Individual",
 					"1997-05-05", //Data de aniversario
 
 					// SHIPPING
 					875, //ID
-					"Leonardo", // NOME_CLIENTE
-					"Rua Pedro Luiz", // ENDERECO_CLIENTE
+					"Fulano", // NOME_CLIENTE
+					"Rua da republica", // ENDERECO_CLIENTE
 					", Casa", // ENDERECO2_CLIENTE
 					"Guarulhos", // CIDADE_CLIENTE
 					"SP", // ESTADO_CLIENTE
 					"Centro", //District
-					", 07151-385", // CEP_CLIENTE
+					", 07000-000", // CEP_CLIENTE
 					"BR", // PAIS_CLIENTE
-					"(11) 96478-0735", // TELEFONE_CLIENTE					
-					"leonardo.nascimento@maxipago.com", // EMAIL_CLIENTE
+					"(11) 99999-9999", // TELEFONE_CLIENTE					
+					"email@email.com", // EMAIL_CLIENTE
 					"Individual",
 					"1997-05-05", //Data de aniversario
 					

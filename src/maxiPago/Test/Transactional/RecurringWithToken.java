@@ -9,11 +9,11 @@ public class RecurringWithToken {
 		
 		try {
 			transaction.Recurring("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_id", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					5.0,
 					"66556", //ID_CLIENTE
-					"JVte6KAE8MA=", //TOKEN_CARTAO
+					"token==", //TOKEN_CARTAO
 					"1", //PROCESSOR_ID
 					"0", //NUMERO_PARCELAS
 					"N", //COM_SEM_JUROS *Y = SIM N = NAO

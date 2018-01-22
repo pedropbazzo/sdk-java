@@ -11,20 +11,20 @@ public class UpdateConsumer {
 		try{
 			
 			api.UpdateConsumer("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"66083", //ID_CONSUMIDOR
-					"393.009.378-21", //CPF_CLIENTE
-					"Leonardo",  //NOME_CLIENTE
-					"Lopes", //SOBRENOME_CLIENTE
-					"Rua Pedro Luiz", //ENDERECO_CLIENTE
+					"123.456.789-12", //CPF_CLIENTE
+					"Fulano",  //NOME_CLIENTE
+					"de Tal", //SOBRENOME_CLIENTE
+					"Rua da republica", //ENDERECO_CLIENTE
 					"Casa", //ENDERECO2_CLIENTE
 					"Guarulhos", //CIDADE_CLIENTE
 					"SP", //ESTADO_CLIENTE
-					"07151-385", //CEP_CLIENTE
-					"(11) 96478-0733",  //TELEFONE_CLIENTE
-					"leonardo.nascimento@maxipago.com", //EMAIL_CLIENTE
-					"05/12/1996", //DATA_NASCIMENTO_CLIENTE
-					"393.009.378-20", //CPF_CLIENTE
+					"07000-000", //CEP_CLIENTE
+					"(11) 99999-9999",  //TELEFONE_CLIENTE
+					"email@email.com", //EMAIL_CLIENTE
+					"dd/mm/aaaa", //DATA_NASCIMENTO_CLIENTE
+					"123.456.789.12", //CPF_CLIENTE
 					"M" //SEXO_CLIENTE
 					);
 			

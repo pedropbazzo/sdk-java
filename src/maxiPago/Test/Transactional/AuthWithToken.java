@@ -10,7 +10,7 @@ public class AuthWithToken {
 		
 		try{
 			transaction.Auth("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					400.0d, //VALOR
 					"1", //PROCESSOR_ID

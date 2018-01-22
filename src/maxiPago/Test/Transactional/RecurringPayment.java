@@ -9,7 +9,7 @@ public class RecurringPayment {
 		
 		try {
 			transaction.Recurring("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
+					"merchant_id", //CHAVE_LOJA
 					"Order-001", //NUMERO_REFERENCIA
 					5.00d, //VALOR
 					"4111111111111111", //NUMERO_CARTAO

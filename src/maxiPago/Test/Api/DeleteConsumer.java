@@ -10,8 +10,8 @@ public class DeleteConsumer {
 		
 		try {
 			api.DeleteConsumer("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA
-					"66082" //ID_CONSUMIDOR
+					"merchant_key", //CHAVE_LOJA
+					"11111" //ID_CONSUMIDOR
 					);
 		} catch (Exception e) {
 			e.printStackTrace();

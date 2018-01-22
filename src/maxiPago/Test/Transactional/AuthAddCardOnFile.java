@@ -10,7 +10,7 @@ public class AuthAddCardOnFile {
 		
 		try{
 			transaction.Auth("100", //ID_LOJA
-					"21g8u6gh6szw1gywfs165vui", //CHAVE_LOJA 
+					"merchant_key", //CHAVE_LOJA 
 					"Order-001", //NUMERO_REFERENCIA
 					5.00d, //VALOR 
 					"4000000000000002", //NUMERO_CARTAO
@@ -26,15 +26,15 @@ public class AuthAddCardOnFile {
 					"ongoing", //DURACAO_LIMITE_DO_USO_CARTAO *ONGOING = INDEFINIDAMENTE USE_ONCE = APENAS UAM VEZ APOS 1 COBRANCA
 					"Cartao prorpio", //COMETARIOS_ADICIONAIS 
 					"400.00", //VALOR_MAXIMO_PERMITIDO_PARA_CARTAO
-					"Leonardo", //NOME_CLIENTE
-					"Rua Pedro Luiz, 134", //ENDERECO_CLIENTE
+					"Fulano", //NOME_CLIENTE
+					"Rua da republica, 134", //ENDERECO_CLIENTE
 					"Casa", //ENDERECO2 *COMPLEMENTO
 					"Guarulhos", //CIDADE_CLIENTE
 					"SP", //ESTADO_CLIENTE
-					"07151-385", //CEP_CLIENTE
+					"07000-000", //CEP_CLIENTE
 					"Brasil", //PAIS_CLIENTE
-					"(11) 6478-0733", //TELEFONE_CLIENTE
-					"leonardo.nascimento@maxipago.com", //EMAIL_CLIENTE
+					"(11) 99999-9999", //TELEFONE_CLIENTE
+					"email@email.com", //EMAIL_CLIENTE
 					"BRL", //MOEDA
 					"Y", //REVISAO_FRAUD *Y = SIM N = NAO
 					"TESTE", //SOFTDESCRIPTOR

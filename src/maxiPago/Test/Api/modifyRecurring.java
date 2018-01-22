@@ -10,8 +10,8 @@ public class modifyRecurring {
 		
 		try {
 			api.modifyRecurring("100",
-					"21g8u6gh6szw1gywfs165vui",
-					"0A011599:015C1281AAF6:E535:3ED4247A",
+					"merchant_key",
+					"0A011599:015C1281AAF6:E535:3ED4347A",
 					2.0d,
 					"4111111111111111",
 					"05",

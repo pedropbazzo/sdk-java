@@ -9,8 +9,8 @@ public class ReportsList {
 		Report reports = new Report();
 		
 		try {
-			reports.GetTransactionDetailReport("23859", //ID_LOJA
-					"fyagh4eoab1nxd3gt4681x8a", //CHAVE_LOJA
+			reports.GetTransactionDetailReport("100", //ID_LOJA
+					"merchant_key", //CHAVE_LOJA
 					"range", //PERIODO DE BUSCA	- PAG 72
 					"1", //NUMERO DE TRANSACOES POR PAGINA
 					"01/01/2017", //SE RANGE, INFORMAR DATA INICIAL MM/DD/AAAA
